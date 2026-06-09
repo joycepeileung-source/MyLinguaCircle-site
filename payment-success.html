@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Payment Received | MyLinguaCircle</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    body { font-family: Inter, sans-serif; background: #faf9f5; color: #1b1c1a; }
+    h1, .brand { font-family: Outfit, sans-serif; }
+  
+        /* MLC global modal fixes */
+        .mlc-modal-panel, #trial-lesson-modal .mlc-modal-panel, #trial-modal .mlc-modal-panel {
+            max-height: calc(100vh - 2rem);
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        #trial-lesson-modal, #mlc-generic-contact-modal {
+            align-items: center;
+            justify-content: center;
+        }
+
+    </style>
+</head>
+<body>
+  
+<!-- Generic Contact Modal -->
+<div aria-modal="true" class="fixed inset-0 z-[110] hidden items-center justify-center p-4 bg-on-background/40 backdrop-blur-sm" id="contact-modal" role="dialog">
+  <div class="mlc-modal-panel bg-surface-container-lowest w-full max-w-2xl rounded-[2rem] shadow-2xl overflow-y-auto relative">
+    <button aria-label="Close contact form" class="absolute top-5 right-5 text-on-surface-variant hover:text-primary transition-colors z-10" id="close-modal" type="button"><span class="material-symbols-outlined text-2xl">close</span></button>
+    <div class="p-8 md:p-12">
+      <p class="text-label-sm font-label-sm text-secondary uppercase tracking-widest mb-2">Contact</p>
+      <h2 class="font-headline-lg text-headline-lg text-primary mb-3">Contact MyLinguaCircle</h2>
+      <p class="text-on-surface-variant mb-8">Send us your question and we will get back to you.</p>
+      <form class="space-y-5" id="contact-form">
+        <input type="hidden" name="form_type" value="General Contact">
+        <label class="block space-y-1"><span class="block text-sm font-semibold text-on-surface">Name</span><input name="name" id="name" class="w-full px-4 py-3 rounded-xl bg-surface-container-low border border-outline-variant/30" required type="text" placeholder="Your name"></label>
+        <label class="block space-y-1"><span class="block text-sm font-semibold text-on-surface">Email</span><input name="email" id="email" class="w-full px-4 py-3 rounded-xl bg-surface-container-low border border-outline-variant/30" required type="email" placeholder="your@email.com"></label>
+        <label class="block space-y-1"><span class="block text-sm font-semibold text-on-surface">Message</span><textarea name="message" id="message" class="w-full px-4 py-3 rounded-xl bg-surface-container-low border border-outline-variant/30" required rows="4" placeholder="How can we help?"></textarea></label>
+        <button class="w-full bg-primary text-white py-4 rounded-xl font-bold text-lg" type="submit">Send Message</button>
+      </form>
+      <div class="hidden text-center py-8" id="form-success"><span class="material-symbols-outlined text-6xl text-primary mb-4">check_circle</span><h4 class="font-headline-md text-on-surface mb-2">Message Sent!</h4><p class="text-on-surface-variant text-sm">We will get back to you shortly.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- Trial Lesson Modal -->
+<div aria-modal="true" class="fixed inset-0 z-[120] hidden items-center justify-center p-4 bg-on-background/40 backdrop-blur-sm" id="trial-lesson-modal" role="dialog">
+  <div class="mlc-modal-panel bg-surface-container-lowest w-full max-w-2xl rounded-[2rem] shadow-2xl overflow-y-auto relative">
+    <button aria-label="Close trial lesson form" class="absolute top-5 right-5 text-on-surface-variant hover:text-primary transition-colors z-10 close-trial-modal" type="button">
+      <span class="material-symbols-outlined text-2xl">close</span>
+    </button>
+    <div class="p-8 md:p-12">
+      <p class="text-label-sm font-label-sm text-secondary uppercase tracking-widest mb-2">Trial Lesson</p>
+      <h2 class="font-headline-lg text-headline-lg text-primary mb-3">Schedule a trial lesson</h2>
+      <p class="text-on-surface-variant mb-8">Share a few details and we will contact you to arrange a trial lesson that fits your goals and time zone.</p>
+      <form class="space-y-5" id="trial-lesson-form">
+        <input type="hidden" name="form_type" value="Trial Lesson Request">
+        <label class="block space-y-1"><span class="block text-sm font-semibold text-on-surface">Full Name</span><input name="full_name" class="w-full px-4 py-3 rounded-xl bg-surface-container-low border border-outline-variant/30 focus:ring-2 focus:ring-primary focus:border-transparent outline-none" required type="text" placeholder="Your name"></label>
+        <label class="block space-y-1"><span class="block text-sm font-semibold text-on-surface">Email Address</span><input name="email" class="w-full px-4 py-3 rounded-xl bg-surface-container-low border border-outline-variant/30 focus:ring-2 focus:ring-primary focus:border-transparent outline-none" required type="email" placeholder="your@email.com"></label>
+        <label class="block space-y-1"><span class="block text-sm font-semibold text-on-surface">Phone / WhatsApp / WeChat</span><input name="contact_method" class="w-full px-4 py-3 rounded-xl bg-surface-container-low border border-outline-variant/30 focus:ring-2 focus:ring-primary focus:border-transparent outline-none" type="text" placeholder="Optional, but helpful"></label>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <label class="block space-y-1"><span class="block text-sm font-semibold text-on-surface">Interested Language</span><select name="interested_language" class="w-full px-4 py-3 rounded-xl bg-surface-container-low border border-outline-variant/30 outline-none"><option>Mandarin</option><option>Cantonese</option><option>English</option><option>Not sure yet</option></select></label>
+          <label class="block space-y-1"><span class="block text-sm font-semibold text-on-surface">Current Level</span><select name="current_level" class="w-full px-4 py-3 rounded-xl bg-surface-container-low border border-outline-variant/30 outline-none"><option>Complete Beginner</option><option>Beginner</option><option>Intermediate</option><option>Advanced</option><option>Not sure</option></select></label>
+        </div>
+        <label class="block space-y-1"><span class="block text-sm font-semibold text-on-surface">Time Zone</span><input name="time_zone" class="w-full px-4 py-3 rounded-xl bg-surface-container-low border border-outline-variant/30 focus:ring-2 focus:ring-primary focus:border-transparent outline-none" type="text" placeholder="e.g. Beijing Time / UTC+8 / London / Pacific Time"></label>
+        <label class="block space-y-1"><span class="block text-sm font-semibold text-on-surface">Preferred Trial Times</span><textarea name="preferred_times" class="w-full px-4 py-3 rounded-xl bg-surface-container-low border border-outline-variant/30 focus:ring-2 focus:ring-primary focus:border-transparent outline-none" rows="3" placeholder="Tell us a few days/times that usually work for you."></textarea></label>
+        <label class="block space-y-1"><span class="block text-sm font-semibold text-on-surface">Learning Goal</span><textarea name="learning_goal" class="w-full px-4 py-3 rounded-xl bg-surface-container-low border border-outline-variant/30 focus:ring-2 focus:ring-primary focus:border-transparent outline-none" rows="3" placeholder="What would you like help with in the trial lesson?"></textarea></label>
+        <button class="w-full bg-primary text-white py-4 rounded-xl font-bold text-lg hover:opacity-90 transition-all active:scale-[0.98]" type="submit">Submit Trial Request</button>
+      </form>
+      <div class="hidden text-center py-8" id="trial-lesson-success">
+        <span class="material-symbols-outlined text-6xl text-primary mb-4">check_circle</span>
+        <h4 class="font-headline-md text-on-surface mb-2">Request Sent!</h4>
+        <p class="text-on-surface-variant text-sm">We will contact you to arrange your trial lesson.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<main class="min-h-screen flex items-center justify-center px-6 py-16">
+    <section class="max-w-2xl w-full bg-white rounded-[2rem] shadow-xl border border-[#c5c5d7]/40 p-8 md:p-12 text-center">
+      <div class="brand text-[#2036bd] text-2xl font-bold mb-10">MyLinguaCircle</div>
+      <div class="w-16 h-16 rounded-full bg-[#dfe0ff] mx-auto mb-6 flex items-center justify-center text-[#2036bd] text-3xl">✓</div>
+      <h1 class="text-4xl font-bold text-[#2036bd] mb-4">Payment received.</h1>
+      <p class="text-[#454654] text-lg leading-relaxed mb-8">Thank you for enrolling. We will review your application and send cohort placement details, schedule confirmation, and preparation materials by email.</p>
+      <div class="bg-[#f4f4f0] rounded-2xl p-5 text-left text-sm text-[#454654] mb-8">
+        <p class="font-bold text-[#1b1c1a] mb-2">What happens next?</p>
+        <ol class="list-decimal pl-5 space-y-2">
+          <li>We confirm your program and level placement.</li>
+          <li>We email your schedule and onboarding details.</li>
+          <li>You join your first live cohort session.</li>
+        </ol>
+      </div>
+      <a href="index.html" class="inline-block bg-[#2036bd] text-white px-8 py-4 rounded-full font-bold">Return Home</a>
+    </section>
+  </main>
+
+<script data-version="MLC-FORMSPREE-GLOBAL-HANDLER">
+(() => {
+  const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mykapgdk';
+
+  function openModal(modal) {
+    if (!modal) return;
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal(modal) {
+    if (!modal) return;
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+    document.body.style.overflow = '';
+  }
+  function setButtonLoading(button, isLoading) {
+    if (!button) return;
+    if (isLoading) {
+      button.dataset.originalText = button.innerHTML;
+      button.disabled = true;
+      button.innerHTML = '<span class="material-symbols-outlined animate-spin">sync</span><span> Sending...</span>';
+    } else {
+      button.disabled = false;
+      if (button.dataset.originalText) button.innerHTML = button.dataset.originalText;
+    }
+  }
+  function addField(formData, name, value) {
+    if (value !== undefined && value !== null && String(value).trim() !== '') formData.append(name, value);
+  }
+  function collectKnownFields(form) {
+    const fd = new FormData(form);
+    form.querySelectorAll('input, select, textarea').forEach(el => {
+      const key = el.name || el.id;
+      if (!key) return;
+      if ((el.type === 'checkbox' || el.type === 'radio') && !el.checked) return;
+      if (!fd.has(key)) fd.append(key, el.value || '');
+    });
+    const page = document.title || window.location.pathname;
+    addField(fd, 'source_page', page);
+    addField(fd, 'submitted_at', new Date().toISOString());
+    return fd;
+  }
+  async function submitToFormspree(form) {
+    const response = await fetch(FORMSPREE_ENDPOINT, {
+      method: 'POST',
+      body: collectKnownFields(form),
+      headers: { 'Accept': 'application/json' }
+    });
+    if (!response.ok) throw new Error('Formspree submission failed');
+    return response;
+  }
+
+  document.addEventListener('click', (event) => {
+    const trialTrigger = event.target.closest('.open-trial-modal-trigger, [data-open-trial-modal]');
+    if (trialTrigger) {
+      event.preventDefault();
+      openModal(document.getElementById('trial-lesson-modal'));
+      return;
+    }
+    const contactTrigger = event.target.closest('a[href="#contact-modal"], .open-contact-modal-trigger, .open-modal-trigger');
+    if (contactTrigger && !contactTrigger.classList.contains('open-enrollment-modal-trigger')) {
+      event.preventDefault();
+      const modal = document.getElementById('contact-modal');
+      const purpose = contactTrigger.getAttribute('data-contact-purpose') || contactTrigger.textContent.trim();
+      const msg = modal?.querySelector('textarea[name="message"], #message');
+      if (msg && /Privacy|Terms|Cookie/i.test(purpose)) msg.value = `Question about: ${purpose}`;
+      openModal(modal);
+    }
+    if (event.target.closest('.close-trial-modal')) {
+      event.preventDefault();
+      closeModal(document.getElementById('trial-lesson-modal'));
+    }
+  });
+
+  ['trial-lesson-modal','contact-modal','mlc-generic-contact-modal'].forEach(id => {
+    const modal = document.getElementById(id);
+    if (modal) modal.addEventListener('click', e => { if (e.target === modal) closeModal(modal); });
+  });
+
+  document.addEventListener('submit', async (event) => {
+    const form = event.target;
+    if (!form.matches('#trial-lesson-form, #contact-form, #connect-form')) return;
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    const button = form.querySelector('button[type="submit"]');
+    setButtonLoading(button, true);
+    try {
+      await submitToFormspree(form);
+      const success = form.id === 'trial-lesson-form' ? document.getElementById('trial-lesson-success') : (form.parentElement?.querySelector('#form-success') || document.getElementById('form-success'));
+      form.classList.add('hidden');
+      if (success) success.classList.remove('hidden');
+      setTimeout(() => {
+        const modal = form.closest('[role="dialog"]');
+        closeModal(modal);
+        form.reset();
+        form.classList.remove('hidden');
+        if (success) success.classList.add('hidden');
+      }, 1800);
+    } catch (err) {
+      alert('We could not send your message. Please try again.');
+    } finally {
+      setButtonLoading(button, false);
+    }
+  }, true);
+})();
+</script>
+
+</body>
+</html>

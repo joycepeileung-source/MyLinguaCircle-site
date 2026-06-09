@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MyLinguaCircle | Master a Language Through Guided Community</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-container": "#3e52d5",
+                        "inverse-on-surface": "#f2f1ed",
+                        "on-primary-fixed-variant": "#1d34ba",
+                        "surface-container-highest": "#e3e2df",
+                        "inverse-primary": "#bbc3ff",
+                        "on-surface-variant": "#454654",
+                        "on-tertiary-fixed-variant": "#5f4100",
+                        "inverse-surface": "#2f312e",
+                        "on-secondary-fixed": "#3d0700",
+                        "background": "#faf9f5",
+                        "surface-container-high": "#e9e8e4",
+                        "primary-fixed-dim": "#bbc3ff",
+                        "on-tertiary-fixed": "#271900",
+                        "secondary-container": "#fe7d5e",
+                        "tertiary-fixed-dim": "#fbbc44",
+                        "surface-container": "#efeeea",
+                        "on-background": "#1b1c1a",
+                        "on-primary-container": "#d7daff",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-fixed": "#ffdad2",
+                        "surface": "#faf9f5",
+                        "tertiary-fixed": "#ffdeab",
+                        "surface-dim": "#dbdad6",
+                        "on-secondary": "#ffffff",
+                        "surface-tint": "#3b4fd2",
+                        "surface-variant": "#e3e2df",
+                        "surface-container-low": "#f4f4f0",
+                        "outline": "#757686",
+                        "tertiary-container": "#805900",
+                        "on-secondary-fixed-variant": "#84240d",
+                        "secondary": "#a53b22",
+                        "tertiary": "#624300",
+                        "on-tertiary-container": "#ffd694",
+                        "on-secondary-container": "#711601",
+                        "on-primary-fixed": "#000d60",
+                        "on-error-container": "#93000a",
+                        "on-surface": "#1b1c1a",
+                        "on-error": "#ffffff",
+                        "primary-fixed": "#dfe0ff",
+                        "error-container": "#ffdad6",
+                        "secondary-fixed-dim": "#ffb4a3",
+                        "on-tertiary": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "primary": "#2036bd",
+                        "error": "#ba1a1a",
+                        "outline-variant": "#c5c5d7",
+                        "surface-bright": "#faf9f5"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-max": "1200px",
+                        "stack-md": "24px",
+                        "gutter": "24px",
+                        "margin-desktop": "64px",
+                        "margin-mobile": "20px",
+                        "base": "8px",
+                        "stack-sm": "12px",
+                        "stack-lg": "48px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-md": ["Outfit"],
+                        "label-md": ["Inter"],
+                        "headline-lg": ["Outfit"],
+                        "label-sm": ["Inter"],
+                        "headline-lg-mobile": ["Outfit"],
+                        "display-lg": ["Outfit"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", {"lineHeight": "28px", "letterSpacing": "0", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "letterSpacing": "0", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.04em", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0", "fontWeight": "500"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "36px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "0.02em", "fontWeight": "700"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .tonal-shadow {
+            box-shadow: 0px 10px 30px rgba(62, 82, 213, 0.05);
+        }
+        .interactive-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0px 15px 40px rgba(62, 82, 213, 0.1);
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.3s ease-out forwards;
+        }
+        .animate-slide-up {
+            animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        
+        .modal-overlay {
+            backdrop-filter: blur(8px);
+            background-color: rgba(27, 28, 26, 0.6);
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease;
+        }
+        .accordion-item.active .accordion-content {
+            max-height: 500px;
+            padding-bottom: 1rem;
+        }
+        .accordion-item.active .chevron-icon {
+            transform: rotate(180deg);
+        }
+    
+        /* MLC global modal fixes */
+        .mlc-modal-panel, #trial-lesson-modal .mlc-modal-panel, #trial-modal .mlc-modal-panel {
+            max-height: calc(100vh - 2rem);
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        #trial-lesson-modal, #mlc-generic-contact-modal {
+            align-items: center;
+            justify-content: center;
+        }
+
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased overflow-y-auto" id="top">
+<!-- TopNavBar -->
+<header class="w-full top-0 sticky z-50 bg-background/80 backdrop-blur-md border-b border-outline-variant/30">
+<nav class="flex items-center justify-between w-full px-margin-mobile md:px-margin-desktop py-4 max-w-container-max mx-auto h-20">
+<a class="text-headline-md font-headline-md font-bold text-primary" href="index.html">MyLinguaCircle</a>
+<div class="hidden md:flex items-center gap-8"><a class="text-primary font-bold border-b-2 border-primary pb-1 font-label-md" href="index.html">Home</a><a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-200 font-label-md" href="programs.html">Programs</a><a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-200 font-label-md" href="about.html">About</a></div>
+<div class="hidden md:flex items-center justify-end"><button class="bg-secondary text-white px-5 py-2 rounded-full font-label-md font-bold hover:opacity-90 transition-all open-trial-modal-trigger" type="button">Trial Lesson</button></div>
+</nav>
+<div class="md:hidden flex justify-center gap-6 px-margin-mobile pb-4 font-label-sm"><a class="text-primary font-bold" href="index.html">Home</a><a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-200" href="programs.html">Programs</a><a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-200" href="about.html">About</a><button class="text-secondary font-bold open-trial-modal-trigger" type="button">Trial Lesson</button></div>
+</header>
+
+<!-- Trial Lesson Modal -->
+<div aria-modal="true" class="fixed inset-0 z-[120] hidden items-center justify-center p-4 bg-on-background/40 backdrop-blur-sm" id="trial-lesson-modal" role="dialog">
+  <div class="mlc-modal-panel bg-surface-container-lowest w-full max-w-2xl rounded-[2rem] shadow-2xl overflow-y-auto relative">
+    <button aria-label="Close trial lesson form" class="absolute top-5 right-5 text-on-surface-variant hover:text-primary transition-colors z-10 close-trial-modal" type="button">
+      <span class="material-symbols-outlined text-2xl">close</span>
+    </button>
+    <div class="p-8 md:p-12">
+      <p class="text-label-sm font-label-sm text-secondary uppercase tracking-widest mb-2">Trial Lesson</p>
+      <h2 class="font-headline-lg text-headline-lg text-primary mb-3">Schedule a trial lesson</h2>
+      <p class="text-on-surface-variant mb-8">Share a few details and we will contact you to arrange a trial lesson that fits your goals and time zone.</p>
+      <form class="space-y-5" id="trial-lesson-form">
+        <input type="hidden" name="form_type" value="Trial Lesson Request">
+        <label class="block space-y-1"><span class="block text-sm font-semibold text-on-surface">Full Name</span><input name="full_name" class="w-full px-4 py-3 rounded-xl bg-surface-container-low border border-outline-variant/30 focus:ring-2 focus:ring-primary focus:border-transparent outline-none" required type="text" placeholder="Your name"></label>
+        <label class="block space-y-1"><span class="block text-sm font-semibold text-on-surface">Email Address</span><input name="email" class="w-full px-4 py-3 rounded-xl bg-surface-container-low border border-outline-variant/30 focus:ring-2 focus:ring-primary focus:border-transparent outline-none" required type="email" placeholder="your@email.com"></label>
+        <label class="block space-y-1"><span class="block text-sm font-semibold text-on-surface">Phone / WhatsApp / WeChat</span><input name="contact_method" class="w-full px-4 py-3 rounded-xl bg-surface-container-low border border-outline-variant/30 focus:ring-2 focus:ring-primary focus:border-transparent outline-none" type="text" placeholder="Optional, but helpful"></label>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <label class="block space-y-1"><span class="block text-sm font-semibold text-on-surface">Interested Language</span><select name="interested_language" class="w-full px-4 py-3 rounded-xl bg-surface-container-low border border-outline-variant/30 outline-none"><option>Mandarin</option><option>Cantonese</option><option>English</option><option>Not sure yet</option></select></label>
+          <label class="block space-y-1"><span class="block text-sm font-semibold text-on-surface">Current Level</span><select name="current_level" class="w-full px-4 py-3 rounded-xl bg-surface-container-low border border-outline-variant/30 outline-none"><option>Complete Beginner</option><option>Beginner</option><option>Intermediate</option><option>Advanced</option><option>Not sure</option></select></label>
+        </div>
+        <label class="block space-y-1"><span class="block text-sm font-semibold text-on-surface">Time Zone</span><input name="time_zone" class="w-full px-4 py-3 rounded-xl bg-surface-container-low border border-outline-variant/30 focus:ring-2 focus:ring-primary focus:border-transparent outline-none" type="text" placeholder="e.g. Beijing Time / UTC+8 / London / Pacific Time"></label>
+        <label class="block space-y-1"><span class="block text-sm font-semibold text-on-surface">Preferred Trial Times</span><textarea name="preferred_times" class="w-full px-4 py-3 rounded-xl bg-surface-container-low border border-outline-variant/30 focus:ring-2 focus:ring-primary focus:border-transparent outline-none" rows="3" placeholder="Tell us a few days/times that usually work for you."></textarea></label>
+        <label class="block space-y-1"><span class="block text-sm font-semibold text-on-surface">Learning Goal</span><textarea name="learning_goal" class="w-full px-4 py-3 rounded-xl bg-surface-container-low border border-outline-variant/30 focus:ring-2 focus:ring-primary focus:border-transparent outline-none" rows="3" placeholder="What would you like help with in the trial lesson?"></textarea></label>
+        <button class="w-full bg-primary text-white py-4 rounded-xl font-bold text-lg hover:opacity-90 transition-all active:scale-[0.98]" type="submit">Submit Trial Request</button>
+      </form>
+      <div class="hidden text-center py-8" id="trial-lesson-success">
+        <span class="material-symbols-outlined text-6xl text-primary mb-4">check_circle</span>
+        <h4 class="font-headline-md text-on-surface mb-2">Request Sent!</h4>
+        <p class="text-on-surface-variant text-sm">We will contact you to arrange your trial lesson.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<main>
+<!-- Contact Modal -->
+<div aria-modal="true" class="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-on-background/40 backdrop-blur-sm hidden" id="contact-modal" role="dialog">
+<div class="bg-surface-container-lowest w-full max-w-2xl rounded-[2rem] shadow-2xl overflow-hidden animate-fade-in relative">
+<button aria-label="Close contact form" class="absolute top-6 right-6 text-on-surface-variant hover:text-primary transition-colors z-10" id="close-modal">
+<span class="material-symbols-outlined text-2xl">close</span>
+</button>
+<div class="p-8 md:p-12">
+<div class="mb-8">
+<h3 class="font-display-lg text-headline-lg text-primary mb-2">Join the Next Cohort</h3>
+<p class="font-body-md text-on-surface-variant">Tell us a bit about your journey and we'll get back to you with the next steps.</p>
+</div>
+<form class="space-y-6" id="contact-form">
+<div class="space-y-2">
+<label class="block text-sm font-semibold text-on-surface" for="full-name">Full Name</label>
+<input class="w-full px-4 py-3 rounded-xl font-body-md bg-surface-container-low border border-outline-variant/30 focus:ring-2 focus:ring-primary focus:border-transparent outline-none" id="full-name" placeholder="Your Name" required="" type="text"/>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="space-y-2">
+<label class="block text-sm font-semibold text-on-surface" for="interested-language">Interested Language</label>
+<select class="w-full px-4 py-3 rounded-xl font-body-md bg-surface-container-low border border-outline-variant/30 outline-none" id="interested-language" required="">
+<option value="Mandarin">Mandarin</option>
+<option value="Cantonese">Cantonese</option>
+<option value="English">English</option>
+</select>
+</div>
+<div class="space-y-2">
+<label class="block text-sm font-semibold text-on-surface" for="language-level">Language Level</label>
+<select class="w-full px-4 py-3 rounded-xl font-body-md bg-surface-container-low border border-outline-variant/30 outline-none" id="language-level" required="">
+<option value="Complete Beginner">Complete Beginner</option>
+<option value="Beginner">Beginner</option>
+<option value="Intermediate">Intermediate</option>
+<option value="Advanced">Advanced</option>
+</select>
+</div>
+</div>
+<div class="space-y-2">
+<label class="block text-sm font-semibold text-on-surface" for="contact-detail">Email or Phone Number</label>
+<input class="w-full px-4 py-3 rounded-xl font-body-md bg-surface-container-low border border-outline-variant/30 focus:ring-2 focus:ring-primary focus:border-transparent outline-none" id="contact-detail" placeholder="your@email.com or +1..." required="" type="text"/>
+</div>
+<button class="w-full bg-primary text-white py-4 rounded-full font-bold text-lg hover:opacity-90 transition-all active:scale-[0.98] mt-4" type="submit">
+                            Submit Interest
+                        </button>
+</form>
+<div class="hidden text-center py-8" id="form-success">
+<span class="material-symbols-outlined text-6xl text-primary mb-4">check_circle</span>
+<h4 class="font-headline-md text-on-surface mb-2">Interest Submitted!</h4>
+<p class="text-on-surface-variant text-sm">Your email app should open with your details ready to send.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Hero Section -->
+<section class="px-6 md:px-margin-desktop py-stack-lg max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-2 gap-stack-lg items-center">
+<div class="relative order-2 md:order-1">
+<img alt="Diverse group of young adults in an online language class" class="w-full h-auto rounded-3xl tonal-shadow object-cover aspect-video md:aspect-square" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCcOnYDreLgZ1FJnFs3NNOwYPQZZgjJICc9ivSiALlIGonR6No8TX0nGeSd48veRWlQWDKQX--Amd1nPhrFLyMK4QKBMaPDL75Nq6BZzxOUYyHHD4M8n0eREMoUYfB_pyiYD9foFcCNNgZVBzQmpzw8Yo5mCYUJ9oXGDR5iyC73AkrXBWjlT_o6nw_IgVPUpMAgJh-Gvod16-X6L6cXnO5vDimZNVZnzVWt4Mnkkkgn6pkw5UAHseYoNUFhRBrkY1_teKcg5huIXBI"/>
+</div>
+<div class="md:pl-12 order-1 md:order-2">
+<h1 class="font-display-lg text-display-lg text-primary leading-tight mb-6">Master a Language Through <span class="text-secondary">Guided Community.</span></h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-8 max-w-xl">No more choosing tutors or learning alone. We design your path and place you into a structured learning cohort.</p>
+<div class="flex flex-col sm:flex-row gap-4">
+<a class="border-2 border-primary text-primary px-8 py-4 rounded-xl font-label-md font-bold text-lg hover:bg-primary-container hover:text-on-primary-container transition-colors inline-block text-center" href="programs.html">Explore Programs</a>
+</div>
+</div>
+</section>
+<!-- Flagship Program -->
+<section class="px-6 md:px-margin-desktop py-stack-lg max-w-container-max mx-auto">
+<div class="bg-surface-container-lowest rounded-[2rem] p-8 md:p-12 tonal-shadow border border-primary/5 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+<div>
+<span class="inline-block px-4 py-1 rounded-full bg-tertiary-fixed text-tertiary font-label-md mb-6">Flagship Program</span>
+<h2 class="font-display-lg text-display-lg text-primary mb-4 leading-tight">Beginner Mandarin Circle</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-8">A 5-week intensive yet joyful experience designed to take you from absolute zero to confident basic communication.</p>
+<ul class="space-y-4 mb-10">
+<li class="flex items-center gap-4">
+<span class="material-symbols-outlined text-secondary">groups</span>
+<span class="font-body-md">Small group (6-8 peers) for maximum attention</span>
+</li>
+<li class="flex items-center gap-4">
+<span class="material-symbols-outlined text-secondary">video_chat</span>
+<span class="font-body-md">Live online sessions with expert facilitators</span>
+</li>
+<li class="flex items-center gap-4">
+<span class="material-symbols-outlined text-secondary">campaign</span>
+<span class="font-body-md">Speaking-focused, immersive curriculum</span>
+</li>
+<li class="flex items-center gap-4">
+<span class="material-symbols-outlined text-secondary">museum</span>
+<span class="font-body-md">Cultural context beyond just vocabulary</span>
+</li>
+</ul>
+<button class="w-full sm:w-auto bg-secondary text-on-secondary px-10 py-5 rounded-xl font-label-md font-bold text-xl hover:scale-105 transition-all shadow-xl open-modal-trigger">
+                        Secure Your Spot
+                    </button>
+</div>
+<div class="relative h-full min-h-[400px]">
+<img alt="Modern workspace with a laptop and a Chinese calligraphy notebook" class="absolute inset-0 w-full h-full object-cover rounded-2xl" src="https://lh3.googleusercontent.com/aida-public/AB6AXuClni2bekYF17GlVFbskyaVktagQ5jwaiH9Cjz5YAoRaRVSeEUZLND7fHQpDpIjRaGit16v0CUu2wGLl2jWwZeMVx0QTDj2WWOSNsCm_9YLvBXygee9NJ2WonoieysusY8zsuq2A6H7cJBrUOk7Hs4hhKJnn1WgPdFCvXjXdo0fy-4Zgd3FFFi2lklwt59uS1rL49t-eDZqHbSDVJtXS2r16afc4xgbj7ScNmSbJr_85QoE7VPOuRJl0Aw-KTQqbs38HPj0znFkF9E"/>
+</div>
+</div>
+</section>
+<!-- Problem Section -->
+<section class="bg-surface-container-low py-stack-lg px-6 md:px-margin-desktop">
+<div class="max-w-container-max mx-auto text-center mb-stack-md">
+<h2 class="font-headline-lg text-headline-lg mb-4 text-primary">The learning struggle is real.</h2>
+</div>
+<div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-4">
+<div class="p-4 bg-surface-container-lowest rounded-xl tonal-shadow text-center">
+<div class="w-12 h-12 bg-primary-fixed flex items-center justify-center rounded-full mx-auto mb-3">
+<span class="material-symbols-outlined text-primary text-xl">architecture</span>
+</div>
+<h3 class="font-bold text-sm mb-1">No structure</h3>
+<p class="text-xs text-on-surface-variant">Apps leave you drifting. We provide a rigorous syllabus.</p>
+</div>
+<div class="p-4 bg-surface-container-lowest rounded-xl tonal-shadow text-center">
+<div class="w-12 h-12 bg-secondary-fixed flex items-center justify-center rounded-full mx-auto mb-3">
+<span class="material-symbols-outlined text-secondary text-xl">category</span>
+</div>
+<h3 class="font-bold text-sm mb-1">Too many choices</h3>
+<p class="text-xs text-on-surface-variant">Overwhelmed by tutors? We curate the best for your level.</p>
+</div>
+<div class="p-4 bg-surface-container-lowest rounded-xl tonal-shadow text-center">
+<div class="w-12 h-12 bg-tertiary-fixed flex items-center justify-center rounded-full mx-auto mb-3">
+<span class="material-symbols-outlined text-tertiary text-xl">record_voice_over</span>
+</div>
+<h3 class="font-bold text-sm mb-1">No speaking practice</h3>
+<p class="text-xs text-on-surface-variant">Real conversation is missing in solitary study.</p>
+</div>
+<div class="p-4 bg-surface-container-lowest rounded-xl tonal-shadow text-center">
+<div class="w-12 h-12 bg-primary-fixed-dim flex items-center justify-center rounded-full mx-auto mb-3">
+<span class="material-symbols-outlined text-primary text-xl">diversity_3</span>
+</div>
+<h3 class="font-bold text-sm mb-1">Isolated learning</h3>
+<p class="text-xs text-on-surface-variant">Loneliness kills motivation. Cohorts build it.</p>
+</div>
+</div>
+<p class="text-center mt-stack-md font-headline-md text-primary">This is why we created cohorts.</p>
+</section>
+<!-- Programs -->
+<section class="px-6 md:px-margin-desktop py-stack-lg max-w-container-max mx-auto" id="more-programs">
+<div class="max-w-container-max mx-auto">
+<h2 class="font-display-lg text-headline-lg text-primary mb-12">Explore Our Programs</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<div class="flex flex-col gap-6">
+<a class="group flex items-center justify-between border-b border-outline-variant/30 pb-4 hover:text-primary transition-colors" href="programs.html#mandarin"><div class="flex items-center gap-3"><span class="material-symbols-outlined text-secondary">language_chinese_dayi</span><h3 class="font-headline-md text-headline-md">Mandarin</h3></div><span class="material-symbols-outlined opacity-0 group-hover:opacity-100 transition-all group-hover:translate-x-1">arrow_forward</span></a>
+<div class="space-y-4"><a class="block p-6 rounded-xl bg-surface-container-low border border-transparent hover:border-primary/20 interactive-card" href="programs.html#mandarin"><h4 class="font-label-md text-primary mb-1">Beginner Mandarin Circle</h4><p class="text-label-sm text-on-surface-variant">5 Weeks - Complete Beginners</p></a><a class="block p-6 rounded-xl bg-surface-container-low border border-transparent hover:border-primary/20 interactive-card" href="programs.html#mandarin"><h4 class="font-label-md text-primary mb-1">Intermediate Mandarin Circle</h4><p class="text-label-sm text-on-surface-variant">8 Weeks - Conversationalists</p></a></div>
+</div>
+<div class="flex flex-col gap-6">
+<a class="group flex items-center justify-between border-b border-outline-variant/30 pb-4 hover:text-primary transition-colors" href="programs.html#cantonese"><div class="flex items-center gap-3"><span class="material-symbols-outlined text-secondary">translate</span><h3 class="font-headline-md text-headline-md">Cantonese</h3></div><span class="material-symbols-outlined opacity-0 group-hover:opacity-100 transition-all group-hover:translate-x-1">arrow_forward</span></a>
+<div class="space-y-4"><a class="block p-6 rounded-xl bg-surface-container-low border border-transparent hover:border-primary/20 interactive-card" href="programs.html#cantonese"><h4 class="font-label-md text-primary mb-1">Beginner Cantonese Circle</h4><p class="text-label-sm text-on-surface-variant">5 Weeks - Heritage Learners</p></a><a class="block p-6 rounded-xl bg-surface-container-low border border-transparent hover:border-primary/20 interactive-card" href="programs.html#cantonese"><h4 class="font-label-md text-primary mb-1">Intermediate Cantonese Circle</h4><p class="text-label-sm text-on-surface-variant">8 Weeks - Pattern Mastery</p></a></div>
+</div>
+<div class="flex flex-col gap-6">
+<a class="group flex items-center justify-between border-b border-outline-variant/30 pb-4 hover:text-primary transition-colors" href="programs.html#english"><div class="flex items-center gap-3"><span class="material-symbols-outlined text-secondary">chat</span><h3 class="font-headline-md text-headline-md">English</h3></div><span class="material-symbols-outlined opacity-0 group-hover:opacity-100 transition-all group-hover:translate-x-1">arrow_forward</span></a>
+<div class="space-y-4"><a class="block p-6 rounded-xl bg-surface-container-low border border-transparent hover:border-primary/20 interactive-card" href="programs.html#english"><h4 class="font-label-md text-primary mb-1">English Confidence Circle</h4><p class="text-label-sm text-on-surface-variant">5 Weeks - Overcome Freezing</p></a><a class="block p-6 rounded-xl bg-surface-container-low border border-transparent hover:border-primary/20 interactive-card" href="programs.html#english"><h4 class="font-label-md text-primary mb-1">Communication Circle</h4><p class="text-label-sm text-on-surface-variant">8 Weeks - Career &amp; Mastery</p></a></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Community Section -->
+<section class="px-6 md:px-margin-desktop py-stack-lg max-w-container-max mx-auto overflow-hidden" id="about">
+<div class="bg-primary-container rounded-[2rem] text-on-primary-container relative overflow-hidden">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-0 items-center relative z-10">
+<div class="p-12 lg:pr-24">
+<h2 class="font-display-lg text-display-lg mb-6">Built on Peer Accountability</h2>
+<p class="font-body-lg text-body-lg text-primary-fixed mb-8">You aren't just another user in an app. You are a member of a circle. When you show up, the community grows together. Shared progress is the fastest path to mastery.</p>
+<div class="flex -space-x-4">
+<div class="w-16 h-16 rounded-full border-4 border-primary-container bg-secondary-fixed flex items-center justify-center overflow-hidden"><span class="material-symbols-outlined text-secondary">face</span></div>
+<div class="w-16 h-16 rounded-full border-4 border-primary-container bg-tertiary-fixed flex items-center justify-center overflow-hidden"><span class="material-symbols-outlined text-tertiary">face_2</span></div>
+<div class="w-16 h-16 rounded-full border-4 border-primary-container bg-primary-fixed flex items-center justify-center overflow-hidden"><span class="material-symbols-outlined text-primary">face_3</span></div>
+<div class="w-16 h-16 rounded-full border-4 border-primary-container bg-surface-container-high flex items-center justify-center overflow-hidden text-primary font-bold">+82</div>
+</div>
+</div>
+<div class="relative h-full min-h-[500px]">
+<img alt="Two people from different cultures shaking hands in a sunlit space" class="absolute inset-0 w-full h-full object-cover rounded-l-[3rem] shadow-xl" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAPI7y7tHPlMv88IwVgluHzM7TrFST5YkR3s4UTAFmYfjzoEcModcqjyyZ6twJCsLd_19x2wTRTFIy3n1W7E3Y1K5f9GtXV2e7_nTKhp-00wE8EMrCT76jrwF2W2dKNObV5KNssg3-PeepkFMk_7_vrXEbKf8NAH1bC7Oprc3y5Q-9_eBYup-nso4WRGBmRpj9KMOVOkK1dzoVLrTo23txemJ64IRzVzXA3cLRQBPRctWUcgMMU--MN11hyBOPQP65y5QwtDvEFFZA"/>
+</div>
+</div>
+</div>
+</section>
+<!-- FAQ Section -->
+<section class="px-6 md:px-margin-desktop py-stack-lg max-w-3xl mx-auto text-center" id="faq">
+<h2 class="font-headline-lg text-headline-lg text-primary mb-6">Frequently Asked Questions</h2>
+<button class="inline-flex items-center gap-2 px-8 py-3 border-2 border-primary text-primary hover:bg-primary-fixed-dim transition-all rounded-full font-label-md font-bold group" id="open-faq-modal">
+<span>Have more questions?</span>
+<span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">help</span>
+</button>
+</section>
+<!-- FAQ Modal -->
+<div class="fixed inset-0 z-[100] hidden items-center justify-center p-4 md:p-8" id="faq-modal">
+<div class="absolute inset-0 modal-overlay transition-opacity duration-300 animate-fade-in" id="faq-modal-backdrop"></div>
+<div class="relative bg-surface-container-lowest w-full max-w-3xl max-h-[85vh] overflow-hidden rounded-[2rem] shadow-2xl border border-outline-variant/30 animate-slide-up flex flex-col">
+<div class="p-6 md:p-8 flex items-center justify-between border-b border-outline-variant/20">
+<h2 class="font-headline-md text-primary">Frequently Asked Questions</h2>
+<button aria-label="Close frequently asked questions" class="p-2 hover:bg-surface-container rounded-full transition-colors" id="close-faq-modal">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<div class="overflow-y-auto p-6 md:p-8 space-y-4">
+<div class="accordion-item bg-surface-container-low rounded-xl px-6 border border-transparent hover:border-primary/20">
+<button class="accordion-trigger w-full py-5 flex items-center justify-between text-left">
+<span class="font-bold text-primary">How does a 'circle' actually work?</span>
+<span class="material-symbols-outlined text-secondary chevron-icon">expand_more</span>
+</button>
+<div class="accordion-content">
+<p class="text-on-surface-variant pb-4">A circle is a cohort of 6-8 learners who meet live twice a week. Between sessions, you engage in group challenges and check-ins via our dedicated platform.</p>
+</div>
+</div>
+<div class="accordion-item bg-surface-container-low rounded-xl px-6 border border-transparent hover:border-primary/20">
+<button class="accordion-trigger w-full py-5 flex items-center justify-between text-left">
+<span class="font-bold text-primary">Is this suitable for absolute beginners?</span>
+<span class="material-symbols-outlined text-secondary chevron-icon">expand_more</span>
+</button>
+<div class="accordion-content">
+<p class="text-on-surface-variant pb-4">Yes! Our "Beginner Circles" are specifically designed for people with zero experience. We build your confidence from the very first minute.</p>
+</div>
+</div>
+<div class="accordion-item bg-surface-container-low rounded-xl px-6 border border-transparent hover:border-primary/20">
+<button class="accordion-trigger w-full py-5 flex items-center justify-between text-left">
+<span class="font-bold text-primary">How much time do I need to commit?</span>
+<span class="material-symbols-outlined text-secondary chevron-icon">expand_more</span>
+</button>
+<div class="accordion-content">
+<p class="text-on-surface-variant pb-4">Most learners find that committing 3-4 hours per week (including live sessions) is the "sweet spot" for progress.</p>
+</div>
+</div>
+</div>
+<div class="p-6 border-t border-outline-variant/20 bg-surface-container-lowest text-center">
+<a class="text-secondary font-bold hover:underline flex items-center justify-center gap-2" href="#contact-modal" data-contact-purpose="Contact">
+<span class="material-symbols-outlined text-sm">mail</span> Contact Support
+                    </a>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full bg-surface-container-low border-t border-outline-variant/30 mt-stack-lg">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-stack-lg">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter mb-12">
+<div>
+<h3 class="text-headline-md font-headline-md text-primary mb-6">MyLinguaCircle</h3>
+<p class="text-on-surface-variant font-body-md text-sm mb-6">Connecting language learners through community-first cohort programs.</p>
+<a aria-label="Email MyLinguaCircle" class="text-primary hover:text-secondary transition-colors inline-flex items-center gap-2" href="#contact-modal" data-contact-purpose="Contact"><span class="material-symbols-outlined text-sm">mail</span> support@mylinguacircle.com</a>
+</div>
+<div>
+<h4 class="font-label-md text-on-surface mb-6 uppercase tracking-wider text-xs">Languages</h4>
+<ul class="space-y-3 font-body-md text-sm">
+<li><a class="text-on-surface-variant hover:text-primary transition-colors" href="programs.html#mandarin">Mandarin</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors" href="programs.html#cantonese">Cantonese</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors" href="programs.html#english">English</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-md text-on-surface mb-6 uppercase tracking-wider text-xs">Company</h4>
+<ul class="space-y-3 font-body-md text-sm">
+<li><a class="text-on-surface-variant hover:text-primary transition-colors" href="about.html">About</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors open-modal-trigger" href="#contact-modal">Contact</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-md text-on-surface mb-6 uppercase tracking-wider text-xs">Support</h4>
+<ul class="space-y-3 font-body-md text-sm">
+<li><a class="text-on-surface-variant hover:text-primary transition-colors" href="index.html#faq">FAQ</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors" href="#contact-modal" data-contact-purpose="Privacy Question">Privacy Policy</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors" href="#contact-modal" data-contact-purpose="Terms of Service">Terms of Service</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors" href="#contact-modal" data-contact-purpose="Cookie Policy">Cookies</a></li>
+</ul>
+</div>
+</div>
+<div class="pt-8 border-t border-outline-variant/30 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="text-[12px] text-on-surface-variant">© 2024 MyLinguaCircle. All rights reserved.</p>
+</div>
+</div>
+</footer>
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Modal Logic
+            const contactModal = document.getElementById('contact-modal');
+            const faqModal = document.getElementById('faq-modal');
+            const openModalTriggers = document.querySelectorAll('.open-modal-trigger');
+            const closeContactBtn = document.getElementById('close-modal');
+            const openFaqBtn = document.getElementById('open-faq-modal');
+            const closeFaqBtn = document.getElementById('close-faq-modal');
+            const contactForm = document.getElementById('contact-form');
+            const successMsg = document.getElementById('form-success');
+            const faqBackdrop = document.getElementById('faq-modal-backdrop');
+
+            const openModal = (m) => {
+                m.classList.remove('hidden');
+                if(m.id === 'contact-modal') m.classList.add('flex');
+                document.body.style.overflow = 'hidden';
+            };
+
+            const closeModal = (m) => {
+                m.classList.add('hidden');
+                if(m.id === 'contact-modal') m.classList.remove('flex');
+                document.body.style.overflow = '';
+            };
+
+            openModalTriggers.forEach(btn => btn.addEventListener('click', (event) => {
+                event.preventDefault();
+                openModal(contactModal);
+            }));
+            closeContactBtn.addEventListener('click', () => closeModal(contactModal));
+            
+            openFaqBtn.addEventListener('click', () => openModal(faqModal));
+            closeFaqBtn.addEventListener('click', () => closeModal(faqModal));
+            faqBackdrop.addEventListener('click', () => closeModal(faqModal));
+
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const fullName = document.getElementById('full-name').value;
+                const interestedLanguage = document.getElementById('interested-language').value;
+                const languageLevel = document.getElementById('language-level').value;
+                const contactDetail = document.getElementById('contact-detail').value;
+                const subject = encodeURIComponent('New MyLinguaCircle cohort interest');
+                const body = encodeURIComponent(`Full Name: ${fullName}
+Interested Language: ${interestedLanguage}
+Language Level: ${languageLevel}
+Email or Phone Number: ${contactDetail}`);
+        /* Direct email-app links removed: handled by Formspree. */
+                contactForm.classList.add('hidden');
+                successMsg.classList.remove('hidden');
+                setTimeout(() => {
+                    closeModal(contactModal);
+                    setTimeout(() => {
+                        contactForm.classList.remove('hidden');
+                        successMsg.classList.add('hidden');
+                        contactForm.reset();
+                    }, 500);
+                }, 2000);
+            });
+
+            // Accordion Logic
+            const accordionItems = document.querySelectorAll('.accordion-item');
+            accordionItems.forEach(item => {
+                const trigger = item.querySelector('.accordion-trigger');
+                trigger.addEventListener('click', () => {
+                    const isActive = item.classList.contains('active');
+                    accordionItems.forEach(i => i.classList.remove('active'));
+                    if (!isActive) item.classList.add('active');
+                });
+            });
+        });
+    </script>
+
+<script data-version="MLC-FORMSPREE-GLOBAL-HANDLER">
+(() => {
+  const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mykapgdk';
+
+  function openModal(modal) {
+    if (!modal) return;
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal(modal) {
+    if (!modal) return;
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+    document.body.style.overflow = '';
+  }
+  function setButtonLoading(button, isLoading) {
+    if (!button) return;
+    if (isLoading) {
+      button.dataset.originalText = button.innerHTML;
+      button.disabled = true;
+      button.innerHTML = '<span class="material-symbols-outlined animate-spin">sync</span><span> Sending...</span>';
+    } else {
+      button.disabled = false;
+      if (button.dataset.originalText) button.innerHTML = button.dataset.originalText;
+    }
+  }
+  function addField(formData, name, value) {
+    if (value !== undefined && value !== null && String(value).trim() !== '') formData.append(name, value);
+  }
+  function collectKnownFields(form) {
+    const fd = new FormData(form);
+    form.querySelectorAll('input, select, textarea').forEach(el => {
+      const key = el.name || el.id;
+      if (!key) return;
+      if ((el.type === 'checkbox' || el.type === 'radio') && !el.checked) return;
+      if (!fd.has(key)) fd.append(key, el.value || '');
+    });
+    const page = document.title || window.location.pathname;
+    addField(fd, 'source_page', page);
+    addField(fd, 'submitted_at', new Date().toISOString());
+    return fd;
+  }
+  async function submitToFormspree(form) {
+    const response = await fetch(FORMSPREE_ENDPOINT, {
+      method: 'POST',
+      body: collectKnownFields(form),
+      headers: { 'Accept': 'application/json' }
+    });
+    if (!response.ok) throw new Error('Formspree submission failed');
+    return response;
+  }
+
+  document.addEventListener('click', (event) => {
+    const trialTrigger = event.target.closest('.open-trial-modal-trigger, [data-open-trial-modal]');
+    if (trialTrigger) {
+      event.preventDefault();
+      openModal(document.getElementById('trial-lesson-modal'));
+      return;
+    }
+    const contactTrigger = event.target.closest('a[href="#contact-modal"], .open-contact-modal-trigger, .open-modal-trigger');
+    if (contactTrigger && !contactTrigger.classList.contains('open-enrollment-modal-trigger')) {
+      event.preventDefault();
+      const modal = document.getElementById('contact-modal');
+      const purpose = contactTrigger.getAttribute('data-contact-purpose') || contactTrigger.textContent.trim();
+      const msg = modal?.querySelector('textarea[name="message"], #message');
+      if (msg && /Privacy|Terms|Cookie/i.test(purpose)) msg.value = `Question about: ${purpose}`;
+      openModal(modal);
+    }
+    if (event.target.closest('.close-trial-modal')) {
+      event.preventDefault();
+      closeModal(document.getElementById('trial-lesson-modal'));
+    }
+  });
+
+  ['trial-lesson-modal','contact-modal','mlc-generic-contact-modal'].forEach(id => {
+    const modal = document.getElementById(id);
+    if (modal) modal.addEventListener('click', e => { if (e.target === modal) closeModal(modal); });
+  });
+
+  document.addEventListener('submit', async (event) => {
+    const form = event.target;
+    if (!form.matches('#trial-lesson-form, #contact-form, #connect-form')) return;
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    const button = form.querySelector('button[type="submit"]');
+    setButtonLoading(button, true);
+    try {
+      await submitToFormspree(form);
+      const success = form.id === 'trial-lesson-form' ? document.getElementById('trial-lesson-success') : (form.parentElement?.querySelector('#form-success') || document.getElementById('form-success'));
+      form.classList.add('hidden');
+      if (success) success.classList.remove('hidden');
+      setTimeout(() => {
+        const modal = form.closest('[role="dialog"]');
+        closeModal(modal);
+        form.reset();
+        form.classList.remove('hidden');
+        if (success) success.classList.add('hidden');
+      }, 1800);
+    } catch (err) {
+      alert('We could not send your message. Please try again.');
+    } finally {
+      setButtonLoading(button, false);
+    }
+  }, true);
+})();
+</script>
+
+</body></html>
