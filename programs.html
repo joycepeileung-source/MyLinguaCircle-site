@@ -131,8 +131,8 @@
 </head>
 <body class="bg-surface text-on-surface font-body-md overflow-x-hidden">
 <!-- Enrollment Application Modal -->
-<div aria-modal="true" class="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-on-background/40 backdrop-blur-sm hidden" id="contact-modal" role="dialog">
-<div class="bg-surface-container-lowest w-full max-w-5xl max-h-[90vh] rounded-[2rem] shadow-2xl overflow-hidden relative flex flex-col">
+<div aria-modal="true" class="fixed inset-0 z-[100] flex items-start justify-center p-4 sm:p-6 bg-on-background/40 backdrop-blur-sm hidden overflow-y-auto overscroll-contain" id="trial-lesson-modal" role="dialog">
+<div class="bg-surface-container-lowest w-full max-w-2xl max-h-[85vh] rounded-[2rem] shadow-2xl overflow-y-auto animate-fade-in relative my-6">
 <button aria-label="Close enrollment application" class="absolute top-5 right-5 text-on-surface-variant hover:text-primary transition-colors z-10" id="close-modal"><span class="material-symbols-outlined text-2xl">close</span></button>
 <div class="p-6 md:p-8 border-b border-outline-variant/20 bg-surface-container-lowest"><p class="text-label-sm font-label-sm text-secondary uppercase tracking-widest mb-2">Enrollment Application</p><h2 class="font-headline-lg text-headline-lg text-primary">Apply for a MyLinguaCircle cohort</h2><p class="text-on-surface-variant mt-2 max-w-2xl">Tell us which circle fits you and when you can join. After you submit, we will receive your application and you will continue to the payment review page.</p></div>
 <div class="overflow-y-auto p-6 md:p-8 bg-surface"><form class="space-y-8" id="enrollment-form">
