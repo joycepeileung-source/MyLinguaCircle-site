@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html class="light scroll-smooth" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Payment Review | MyLinguaCircle</title>
+  <meta name="description" content="Review your MyLinguaCircle enrollment details and continue to secure payment." />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#2036bd",
+            "primary-container": "#3e52d5",
+            secondary: "#a53b22",
+            "secondary-container": "#fe7d5e",
+            tertiary: "#624300",
+            background: "#faf9f5",
+            surface: "#faf9f5",
+            "surface-container-lowest": "#ffffff",
+            "surface-container-low": "#f4f4f0",
+            "surface-container": "#efeeea",
+            "on-surface": "#1b1c1a",
+            "on-background": "#1b1c1a",
+            "on-surface-variant": "#454654",
+            "on-primary": "#ffffff",
+            "outline-variant": "#c5c5d7",
+            "tertiary-fixed": "#ffdeab",
+            "on-tertiary-fixed": "#271900"
+          },
+          borderRadius: { xl: "0.75rem", full: "9999px" },
+          spacing: {
+            "container-max": "1200px",
+            "margin-desktop": "64px",
+            "margin-mobile": "20px",
+            "stack-lg": "48px",
+            "stack-md": "24px",
+            gutter: "24px"
+          },
+          fontFamily: {
+            "body-md": ["Inter"],
+            "body-lg": ["Inter"],
+            "headline-md": ["Outfit"],
+            "headline-lg": ["Outfit"],
+            "display-lg": ["Outfit"],
+            "label-md": ["Inter"],
+            "label-sm": ["Inter"]
+          },
+          fontSize: {
+            "body-md": ["16px", { lineHeight: "24px" }],
+            "body-lg": ["18px", { lineHeight: "28px" }],
+            "headline-md": ["24px", { lineHeight: "32px", fontWeight: "600" }],
+            "headline-lg": ["32px", { lineHeight: "40px", fontWeight: "600" }],
+            "display-lg": ["48px", { lineHeight: "56px", fontWeight: "700" }],
+            "label-md": ["14px", { lineHeight: "20px", fontWeight: "600", letterSpacing: "0.04em" }],
+            "label-sm": ["12px", { lineHeight: "16px", fontWeight: "500" }]
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; vertical-align: middle; }
+    .glass-nav { backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+    .tonal-shadow { box-shadow: 0px 10px 30px rgba(62, 82, 213, 0.05); }
+    .payment-card { box-shadow: 0px 10px 30px rgba(62, 82, 213, 0.05); }
+    .payment-action.is-disabled { opacity: 0.45; cursor: not-allowed; pointer-events: auto; }
+  </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md overflow-x-hidden">
+  <header class="fixed top-0 z-50 w-full bg-surface/80 glass-nav border-b border-outline-variant/30">
+    <nav class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-4 max-w-container-max mx-auto">
+      <a class="text-headline-md font-headline-md font-bold text-primary" href="index.html">MyLinguaCircle</a>
+      <div class="hidden md:flex items-center gap-8">
+        <a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-200 font-label-md" href="index.html">Home</a>
+        <a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-200 font-label-md" href="programs.html">Programs</a>
+        <a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-200 font-label-md" href="about.html">About</a>
+      </div>
+      <a class="hidden sm:inline-flex bg-primary text-white px-5 py-2 rounded-full font-label-md font-bold hover:opacity-90 transition-all" href="programs.html">Back to Programs</a>
+    </nav>
+    <div class="md:hidden flex justify-center gap-6 px-margin-mobile pb-4 font-label-sm">
+      <a class="text-on-surface-variant font-medium" href="index.html">Home</a>
+      <a class="text-on-surface-variant font-medium" href="programs.html">Programs</a>
+      <a class="text-on-surface-variant font-medium" href="about.html">About</a>
+    </div>
+  </header>
+
+  <main class="pt-32 md:pt-28 pb-stack-lg">
+    <section class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+      <div class="mb-8">
+        <a class="inline-flex items-center gap-2 text-primary font-label-md hover:underline mb-6" href="programs.html">
+          <span class="material-symbols-outlined text-sm">arrow_back</span> Return to programs
+        </a>
+        <p class="text-label-sm font-label-sm text-secondary uppercase tracking-widest mb-2">Enrollment Step 2 of 2</p>
+        <h1 class="font-display-lg text-display-lg text-primary max-w-3xl">Review your program and continue to secure payment.</h1>
+        <p class="text-body-lg text-on-surface-variant max-w-2xl mt-4">Please confirm the selected circle, student details, and payment terms before continuing. Card information should be entered only on the secure Stripe or PayPal checkout page.</p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter items-start">
+        <div class="lg:col-span-2 space-y-6">
+          <section class="bg-white rounded-[2rem] border border-outline-variant/30 p-6 md:p-8 payment-card">
+            <div class="flex items-center gap-3 mb-6">
+              <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center"><span class="material-symbols-outlined text-primary">school</span></div>
+              <div>
+                <p class="text-label-sm font-label-sm text-on-surface-variant uppercase tracking-widest">Selected Program</p>
+                <h2 class="font-headline-md text-primary" id="program-title">Beginner Mandarin Circle</h2>
+              </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div class="bg-surface-container-low rounded-2xl p-4">
+                <p class="text-xs uppercase tracking-widest text-on-surface-variant mb-1">Length</p>
+                <p class="font-bold" id="program-length">5 Weeks</p>
+              </div>
+              <div class="bg-surface-container-low rounded-2xl p-4">
+                <p class="text-xs uppercase tracking-widest text-on-surface-variant mb-1">Format</p>
+                <p class="font-bold">Small group, live online</p>
+              </div>
+              <div class="bg-surface-container-low rounded-2xl p-4">
+                <p class="text-xs uppercase tracking-widest text-on-surface-variant mb-1">Currency</p>
+                <p class="font-bold">USD</p>
+              </div>
+            </div>
+          </section>
+
+          <section class="bg-white rounded-[2rem] border border-outline-variant/30 p-6 md:p-8 payment-card">
+            <div class="flex items-center justify-between gap-4 mb-6">
+              <div>
+                <p class="text-label-sm font-label-sm text-secondary uppercase tracking-widest mb-2">Student Details</p>
+                <h2 class="font-headline-md text-primary">Application summary</h2>
+              </div>
+              <button class="text-sm font-bold text-primary hover:underline" id="edit-student-details" type="button">Edit</button>
+            </div>
+            <dl class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4 text-sm" id="student-details-view">
+              <div><dt class="text-on-surface-variant">Name</dt><dd class="font-semibold" id="student-name">Not provided</dd></div>
+              <div><dt class="text-on-surface-variant">Email</dt><dd class="font-semibold" id="student-email">Not provided</dd></div>
+              <div><dt class="text-on-surface-variant">Country</dt><dd class="font-semibold" id="student-country">Not specified</dd></div>
+              <div><dt class="text-on-surface-variant">Time Zone</dt><dd class="font-semibold" id="student-timezone">Not specified</dd></div>
+              <div><dt class="text-on-surface-variant">Current Ability</dt><dd class="font-semibold" id="student-level">Not specified</dd></div>
+              <div><dt class="text-on-surface-variant">Preferred Days</dt><dd class="font-semibold" id="student-days">Not specified</dd></div>
+            </dl>
+            <form class="hidden grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4 text-sm" id="student-details-edit-form">
+              <label class="space-y-1"><span class="block text-on-surface-variant">Name</span><input class="w-full rounded-xl border-outline-variant bg-surface-container-low focus:ring-primary focus:border-primary" id="edit-student-name" type="text" /></label>
+              <label class="space-y-1"><span class="block text-on-surface-variant">Email</span><input class="w-full rounded-xl border-outline-variant bg-surface-container-low focus:ring-primary focus:border-primary" id="edit-student-email" type="email" /></label>
+              <label class="space-y-1"><span class="block text-on-surface-variant">Country</span><input class="w-full rounded-xl border-outline-variant bg-surface-container-low focus:ring-primary focus:border-primary" id="edit-student-country" type="text" /></label>
+              <label class="space-y-1"><span class="block text-on-surface-variant">Time Zone</span><input class="w-full rounded-xl border-outline-variant bg-surface-container-low focus:ring-primary focus:border-primary" id="edit-student-timezone" type="text" /></label>
+              <label class="space-y-1"><span class="block text-on-surface-variant">Current Ability</span><select class="w-full rounded-xl border-outline-variant bg-surface-container-low focus:ring-primary focus:border-primary" id="edit-student-level"><option>Complete Beginner</option><option>Elementary</option><option>Intermediate</option><option>Advanced</option><option>Not specified</option></select></label>
+              <label class="space-y-1"><span class="block text-on-surface-variant">Preferred Days</span><input class="w-full rounded-xl border-outline-variant bg-surface-container-low focus:ring-primary focus:border-primary" id="edit-student-days" type="text" /></label>
+              <div class="md:col-span-2 flex flex-wrap gap-3 pt-2">
+                <button class="bg-primary text-white px-6 py-3 rounded-xl font-bold hover:opacity-90 transition-all" type="submit">Save Details</button>
+                <button class="border-2 border-primary text-primary px-6 py-3 rounded-xl font-bold hover:bg-primary/5 transition-all" id="cancel-student-details-edit" type="button">Cancel</button>
+              </div>
+            </form>
+          </section>
+
+          <section class="bg-surface-container-low rounded-[2rem] border border-outline-variant/30 p-6 md:p-8">
+            <h2 class="font-headline-md text-primary mb-6">Before you pay</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div class="bg-white rounded-2xl p-5 border border-outline-variant/20">
+                <span class="material-symbols-outlined text-secondary mb-3">event_available</span>
+                <h3 class="font-bold mb-2">Schedule confirmation</h3>
+                <p class="text-sm text-on-surface-variant">Payment reserves your spot, but the exact cohort schedule is confirmed by email based on availability and level fit.</p>
+              </div>
+              <div class="bg-white rounded-2xl p-5 border border-outline-variant/20">
+                <span class="material-symbols-outlined text-secondary mb-3">public</span>
+                <h3 class="font-bold mb-2">International cards</h3>
+                <p class="text-sm text-on-surface-variant">Prices are listed in USD. Your bank may convert the charge into your local currency and may apply foreign transaction fees.</p>
+              </div>
+              <div class="bg-white rounded-2xl p-5 border border-outline-variant/20">
+                <span class="material-symbols-outlined text-secondary mb-3">verified_user</span>
+                <h3 class="font-bold mb-2">Secure payment</h3>
+                <p class="text-sm text-on-surface-variant">Do not send card details by email. Use only the secure Stripe or PayPal checkout link provided on this page.</p>
+              </div>
+              <div class="bg-white rounded-2xl p-5 border border-outline-variant/20">
+                <span class="material-symbols-outlined text-secondary mb-3">mail</span>
+                <h3 class="font-bold mb-2">Confirmation email</h3>
+                <p class="text-sm text-on-surface-variant">After payment, you will receive next steps, class placement details, and preparation materials by email.</p>
+              </div>
+            </div>
+          </section>
+
+          <section class="bg-white rounded-[2rem] border border-outline-variant/30 p-6 md:p-8 payment-card" id="refund-policy">
+            <p class="text-label-sm font-label-sm text-secondary uppercase tracking-widest mb-2">Enrollment Terms</p>
+            <h2 class="font-headline-md text-primary mb-4">Cancellation, refund, and transfer policy</h2>
+            <div class="space-y-4 text-sm text-on-surface-variant leading-relaxed">
+              <p>We want every student to be placed in a cohort that fits their level, goals, and schedule.</p>
+              <p><strong class="text-on-surface">Full refund if we cannot place you:</strong> If MyLinguaCircle is unable to place you in a suitable cohort, you will receive a full refund.</p>
+              <p><strong class="text-on-surface">24-hour cancellation window:</strong> After payment, you may cancel your enrollment within 24 hours for a full refund.</p>
+              <p><strong class="text-on-surface">After 24 hours:</strong> After the 24-hour cancellation window, tuition is non-refundable unless MyLinguaCircle is unable to provide a suitable cohort placement. If your schedule changes before the cohort begins, you may request to transfer your enrollment to a future cohort, subject to availability.</p>
+              <p><strong class="text-on-surface">After the cohort begins:</strong> Once your cohort has started, tuition is non-refundable. If you are unable to continue, your remaining tuition value may be transferred to a future cohort or applied toward eligible Language Club sessions at the current rate of $49 USD per session.</p>
+              <p><strong class="text-on-surface">Language Club application:</strong> Any remaining tuition value applied toward Language Club sessions is subject to availability, is calculated at $49 USD per session, and must be used within 12 months of the original payment date.</p>
+              <p><strong class="text-on-surface">Privacy:</strong> Your application details are used only to process enrollment, cohort placement, payment support, and class communication.</p>
+            </div>
+          </section>
+        </div>
+
+        <aside class="lg:sticky lg:top-28">
+          <div class="bg-white rounded-[2rem] border border-outline-variant/30 p-6 md:p-8 payment-card">
+            <p class="text-label-sm font-label-sm text-secondary uppercase tracking-widest mb-2">Order Summary</p>
+            <h2 class="font-headline-md text-primary mb-6">Today’s payment</h2>
+            <div class="space-y-4 border-b border-outline-variant/30 pb-6 mb-6">
+              <div class="flex justify-between gap-4">
+                <span id="summary-program" class="font-semibold">Beginner Mandarin Circle</span>
+                <span id="summary-price" class="font-bold">$549</span>
+              </div>
+              <div class="flex justify-between text-sm text-on-surface-variant">
+                <span>Taxes / processing</span>
+                <span>Calculated by payment provider</span>
+              </div>
+            </div>
+            <div class="flex justify-between items-end mb-6">
+              <span class="font-bold">Total due today</span>
+              <span class="text-3xl font-bold text-primary" id="summary-total">$549 USD</span>
+            </div>
+            <label class="flex items-start gap-3 bg-surface-container-low rounded-2xl p-4 text-sm text-on-surface-variant mb-4 cursor-pointer">
+              <input class="mt-1 rounded text-primary focus:ring-primary" id="policy-agreement" type="checkbox" />
+              <span>I understand and agree to the <a class="text-primary font-bold hover:underline" href="#refund-policy">Cancellation, Refund, and Transfer Policy</a>.</span>
+            </label>
+            <div class="space-y-3">
+              <a class="block text-center bg-primary text-white px-6 py-4 rounded-xl font-bold hover:opacity-90 transition-all payment-action is-disabled" id="stripe-payment-link" href="#" aria-disabled="true">Pay securely with Stripe</a>
+              <a class="block text-center border-2 border-primary text-primary px-6 py-4 rounded-xl font-bold hover:bg-primary/5 transition-all payment-action is-disabled" id="paypal-payment-link" href="#" aria-disabled="true">Pay with PayPal / Card</a>
+            </div>
+            <p class="text-xs text-on-surface-variant mt-4 leading-relaxed">Please review and agree to the policy before continuing to payment. Replace the placeholder links in this page with your real Stripe Payment Links or PayPal Payment Links before launch.</p>
+            <div class="mt-6 bg-surface-container-low rounded-2xl p-4 text-xs text-on-surface-variant">
+              <p class="font-bold text-on-surface mb-1">Need help?</p>
+              <p><a class="text-primary font-bold hover:underline" href="#contact-modal" data-contact-topic="Payment Question">Contact us</a> before paying if you are unsure about the right program.</p>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-surface-container-low border-t border-outline-variant/30 mt-stack-lg">
+    <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-stack-lg">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-gutter mb-12">
+        <div>
+          <h3 class="text-headline-md font-headline-md text-primary mb-6">MyLinguaCircle</h3>
+          <p class="text-on-surface-variant font-body-md text-sm mb-6">Language mastery built on connection, community, and curiosity.</p>
+          <a aria-label="Email MyLinguaCircle" class="text-primary hover:text-secondary transition-colors inline-flex items-center gap-2" href="#contact-modal" data-contact-topic="Contact / Questions"><span class="material-symbols-outlined text-sm">mail</span> support@mylinguacircle.com</a>
+        </div>
+        <div>
+          <h4 class="font-label-md text-on-surface mb-6 uppercase tracking-wider text-xs">Languages</h4>
+          <ul class="space-y-3 font-body-md text-sm">
+            <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="programs.html#mandarin">Mandarin</a></li>
+            <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="programs.html#cantonese">Cantonese</a></li>
+            <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="programs.html#english">English</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-label-md text-on-surface mb-6 uppercase tracking-wider text-xs">Company</h4>
+          <ul class="space-y-3 font-body-md text-sm">
+            <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="about.html">About</a></li>
+            <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="programs.html#program-info">Methodology</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-label-md text-on-surface mb-6 uppercase tracking-wider text-xs">Support</h4>
+          <ul class="space-y-3 font-body-md text-sm">
+            <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="index.html#faq">FAQ</a></li>
+            <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="#contact-modal" data-contact-topic="Privacy Policy Question">Privacy Policy</a></li>
+            <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="#contact-modal" data-contact-topic="Terms of Service Question">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="pt-8 border-t border-outline-variant/30 flex flex-col md:flex-row justify-between items-center gap-4">
+        <p class="text-[12px] text-on-surface-variant">© 2024 MyLinguaCircle. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const PROGRAMS = {
+      "Beginner Mandarin Circle": { price: 549, length: "5 Weeks", stripe: "REPLACE_WITH_STRIPE_PAYMENT_LINK", paypal: "REPLACE_WITH_PAYPAL_PAYMENT_LINK" },
+      "Intermediate Mandarin Circle": { price: 799, length: "8 Weeks", stripe: "REPLACE_WITH_STRIPE_PAYMENT_LINK", paypal: "REPLACE_WITH_PAYPAL_PAYMENT_LINK" },
+      "Beginner Cantonese Circle": { price: 549, length: "8 Weeks", stripe: "REPLACE_WITH_STRIPE_PAYMENT_LINK", paypal: "REPLACE_WITH_PAYPAL_PAYMENT_LINK" },
+      "Intermediate Cantonese Circle": { price: 799, length: "8 Weeks", stripe: "REPLACE_WITH_STRIPE_PAYMENT_LINK", paypal: "REPLACE_WITH_PAYPAL_PAYMENT_LINK" },
+      "English Confidence Circle": { price: 549, length: "5 Weeks", stripe: "REPLACE_WITH_STRIPE_PAYMENT_LINK", paypal: "REPLACE_WITH_PAYPAL_PAYMENT_LINK" },
+      "English Communication Circle": { price: 799, length: "8 Weeks", stripe: "REPLACE_WITH_STRIPE_PAYMENT_LINK", paypal: "REPLACE_WITH_PAYPAL_PAYMENT_LINK" }
+    };
+
+    function cleanProgramName(raw) {
+      if (!raw) return "Beginner Mandarin Circle";
+      return raw.split(' - ')[0].trim();
+    }
+
+    function getApplicationData() {
+      const params = new URLSearchParams(window.location.search);
+      let stored = {};
+      try { stored = JSON.parse(sessionStorage.getItem('mlcEnrollmentApplication') || '{}'); } catch (e) { stored = {}; }
+      return {
+        selectedProgram: stored.selectedProgram || params.get('program') || 'Beginner Mandarin Circle',
+        fullName: stored.fullName || params.get('name') || 'Not provided',
+        email: stored.email || params.get('email') || 'Not provided',
+        country: stored.country || 'Not specified',
+        timeZone: stored.timeZone || 'Not specified',
+        currentAbility: stored.currentAbility || 'Not specified',
+        preferredDays: stored.preferredDays || 'Not specified'
+      };
+    }
+
+    function setText(id, value) {
+      const el = document.getElementById(id);
+      if (el) el.textContent = value;
+    }
+
+    function setInputValue(id, value) {
+      const el = document.getElementById(id);
+      if (el) el.value = value;
+    }
+
+    function updateStudentDetails(updated) {
+      app.fullName = updated.fullName || 'Not provided';
+      app.email = updated.email || 'Not provided';
+      app.country = updated.country || 'Not specified';
+      app.timeZone = updated.timeZone || 'Not specified';
+      app.currentAbility = updated.currentAbility || 'Not specified';
+      app.preferredDays = updated.preferredDays || 'Not specified';
+      setText('student-name', app.fullName);
+      setText('student-email', app.email);
+      setText('student-country', app.country);
+      setText('student-timezone', app.timeZone);
+      setText('student-level', app.currentAbility);
+      setText('student-days', app.preferredDays);
+      const stored = JSON.parse(sessionStorage.getItem('mlcEnrollmentApplication') || '{}');
+      sessionStorage.setItem('mlcEnrollmentApplication', JSON.stringify({ ...stored, ...app }));
+      const params = new URLSearchParams(window.location.search);
+      params.set('name', app.fullName);
+      params.set('email', app.email);
+      window.history.replaceState({}, '', `${window.location.pathname}?${params.toString()}`);
+    }
+
+    function preparePaymentLink(anchor, url, label) {
+      if (!anchor) return;
+      anchor.dataset.paymentUrl = (!url || url.startsWith('REPLACE_WITH')) ? '' : url;
+      anchor.href = '#';
+      anchor.addEventListener('click', (event) => {
+        const agreed = document.getElementById('policy-agreement')?.checked;
+        if (!agreed) {
+          event.preventDefault();
+          alert('Please review and agree to the cancellation, refund, and transfer policy before continuing to payment.');
+          return;
+        }
+        if (!anchor.dataset.paymentUrl) {
+          event.preventDefault();
+          alert(`${label} is not connected yet. Replace the placeholder URL in payment.html with your real payment link before launch.`);
+          return;
+        }
+        anchor.href = anchor.dataset.paymentUrl;
+      });
+    }
+
+    function setPaymentButtonsEnabled(enabled) {
+      document.querySelectorAll('.payment-action').forEach((button) => {
+        button.classList.toggle('is-disabled', !enabled);
+        button.setAttribute('aria-disabled', enabled ? 'false' : 'true');
+      });
+    }
+
+    const app = getApplicationData();
+    const programName = cleanProgramName(app.selectedProgram);
+    const program = PROGRAMS[programName] || PROGRAMS["Beginner Mandarin Circle"];
+    const price = `$${program.price}`;
+
+    setText('program-title', programName);
+    setText('program-length', program.length);
+    setText('summary-program', programName);
+    setText('summary-price', price);
+    setText('summary-total', `${price} USD`);
+    setText('student-name', app.fullName);
+    setText('student-email', app.email);
+    setText('student-country', app.country);
+    setText('student-timezone', app.timeZone);
+    setText('student-level', app.currentAbility);
+    setText('student-days', app.preferredDays);
+
+    const editStudentDetails = document.getElementById('edit-student-details');
+    const studentDetailsView = document.getElementById('student-details-view');
+    const studentDetailsEditForm = document.getElementById('student-details-edit-form');
+    const cancelStudentDetailsEdit = document.getElementById('cancel-student-details-edit');
+
+    if (editStudentDetails && studentDetailsView && studentDetailsEditForm) {
+      editStudentDetails.addEventListener('click', () => {
+        setInputValue('edit-student-name', app.fullName === 'Not provided' ? '' : app.fullName);
+        setInputValue('edit-student-email', app.email === 'Not provided' ? '' : app.email);
+        setInputValue('edit-student-country', app.country === 'Not specified' ? '' : app.country);
+        setInputValue('edit-student-timezone', app.timeZone === 'Not specified' ? '' : app.timeZone);
+        setInputValue('edit-student-level', app.currentAbility);
+        setInputValue('edit-student-days', app.preferredDays === 'Not specified' ? '' : app.preferredDays);
+        studentDetailsView.classList.add('hidden');
+        studentDetailsEditForm.classList.remove('hidden');
+        editStudentDetails.classList.add('hidden');
+      });
+
+      studentDetailsEditForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+        updateStudentDetails({
+          fullName: document.getElementById('edit-student-name')?.value.trim(),
+          email: document.getElementById('edit-student-email')?.value.trim(),
+          country: document.getElementById('edit-student-country')?.value.trim(),
+          timeZone: document.getElementById('edit-student-timezone')?.value.trim(),
+          currentAbility: document.getElementById('edit-student-level')?.value.trim(),
+          preferredDays: document.getElementById('edit-student-days')?.value.trim()
+        });
+        studentDetailsEditForm.classList.add('hidden');
+        studentDetailsView.classList.remove('hidden');
+        editStudentDetails.classList.remove('hidden');
+      });
+    }
+
+    if (cancelStudentDetailsEdit && studentDetailsView && studentDetailsEditForm && editStudentDetails) {
+      cancelStudentDetailsEdit.addEventListener('click', () => {
+        studentDetailsEditForm.classList.add('hidden');
+        studentDetailsView.classList.remove('hidden');
+        editStudentDetails.classList.remove('hidden');
+      });
+    }
+
+    preparePaymentLink(document.getElementById('stripe-payment-link'), program.stripe, 'Stripe payment link');
+    preparePaymentLink(document.getElementById('paypal-payment-link'), program.paypal, 'PayPal payment link');
+
+    const policyAgreement = document.getElementById('policy-agreement');
+    setPaymentButtonsEnabled(false);
+    if (policyAgreement) {
+      policyAgreement.addEventListener('change', () => setPaymentButtonsEnabled(policyAgreement.checked));
+    }
+  </script>
+
+<div aria-modal="true" class="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-on-background/40 backdrop-blur-sm hidden" id="contact-modal" role="dialog">
+  <div class="bg-surface-container-lowest w-full max-w-xl rounded-[2rem] shadow-2xl overflow-hidden relative">
+    <button aria-label="Close contact form" class="absolute top-5 right-5 text-on-surface-variant hover:text-primary transition-colors z-10" id="close-contact-modal" type="button"><span class="material-symbols-outlined text-2xl">close</span></button>
+    <div class="p-8 md:p-10">
+      <p class="text-label-sm font-label-sm text-secondary uppercase tracking-widest mb-2">Contact / Questions</p>
+      <h3 class="font-headline-lg text-headline-lg text-primary mb-2">Ask MyLinguaCircle</h3>
+      <p class="text-on-surface-variant mb-6">Send us a question before you continue with payment.</p>
+      <form class="space-y-5" id="payment-contact-form" action="https://formspree.io/f/xzdqvbww" method="POST" data-form-route="contact" data-form-type="Contact / Questions">
+        <label class="space-y-2 block"><span class="block text-sm font-semibold text-on-surface">Name</span><input id="payment-contact-name" class="w-full px-4 py-3 rounded-xl font-body-md bg-surface-container-low border border-outline-variant/30 focus:ring-2 focus:ring-primary focus:border-transparent outline-none" required type="text" placeholder="Your name"></label>
+        <label class="space-y-2 block"><span class="block text-sm font-semibold text-on-surface">Email</span><input id="payment-contact-email" class="w-full px-4 py-3 rounded-xl font-body-md bg-surface-container-low border border-outline-variant/30 focus:ring-2 focus:ring-primary focus:border-transparent outline-none" required type="email" placeholder="your@email.com"></label>
+        <label class="space-y-2 block"><span class="block text-sm font-semibold text-on-surface">Message</span><textarea id="payment-contact-message" class="w-full px-4 py-3 rounded-xl font-body-md bg-surface-container-low border border-outline-variant/30 focus:ring-2 focus:ring-primary focus:border-transparent outline-none" rows="4" required placeholder="How can we help?"></textarea></label>
+        <button class="w-full bg-primary text-white py-4 rounded-xl font-bold text-lg hover:opacity-90 transition-all" type="submit">Send Message</button>
+      </form>
+      <div class="hidden text-center py-8" id="payment-contact-success"><span class="material-symbols-outlined text-6xl text-primary mb-4">check_circle</span><h4 class="font-headline-md text-on-surface mb-2">Message Sent</h4><p class="text-on-surface-variant text-sm">We received your question and will follow up soon.</p></div>
+    </div>
+  </div>
+</div>
+<script data-version="MLC-FORMSPREE-ROUTER-v10">
+(function () {
+  const ENDPOINTS = {
+    enrollment: 'https://formspree.io/f/mykapgdk',
+    trial: 'https://formspree.io/f/mgobzeze',
+    contact: 'https://formspree.io/f/xzdqvbww',
+    interest: 'https://formspree.io/f/mojzlqbo'
+  };
+
+  const handledFormIds = new Set(['enrollment-form', 'trial-lesson-form', 'contact-form', 'connect-form', 'payment-contact-form']);
+  const byId = id => document.getElementById(id);
+  const qsa = (sel, root = document) => Array.from(root.querySelectorAll(sel));
+  const valueById = id => (byId(id)?.value || '').trim();
+
+  function setFormActions() {
+    const config = {
+      'enrollment-form': ['enrollment', 'Enrollment Application'],
+      'trial-lesson-form': ['trial', 'Trial Lesson Request'],
+      'contact-form': ['contact', 'Contact / Questions'],
+      'connect-form': ['interest', 'General Interest'],
+      'payment-contact-form': ['contact', 'Contact / Questions']
+    };
+    Object.entries(config).forEach(([id, [route, type]]) => {
+      const form = byId(id);
+      if (!form) return;
+      form.setAttribute('action', ENDPOINTS[route]);
+      form.setAttribute('method', 'POST');
+      form.dataset.formRoute = route;
+      form.dataset.formType = type;
+      let hidden = form.querySelector('input[name="form_type"]');
+      if (!hidden) {
+        hidden = document.createElement('input');
+        hidden.type = 'hidden';
+        hidden.name = 'form_type';
+        form.prepend(hidden);
+      }
+      hidden.value = type;
+    });
+  }
+
+  function openModal(modal) {
+    if (!modal) return;
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal(modal) {
+    if (!modal) return;
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+    document.body.style.overflow = '';
+  }
+
+  function resetTrialModal() {
+    const form = byId('trial-lesson-form');
+    const success = byId('trial-form-success') || byId('trial-lesson-success');
+    if (form) {
+      form.classList.remove('hidden');
+      form.dataset.formRoute = 'trial';
+      form.setAttribute('action', ENDPOINTS.trial);
+      form.setAttribute('method', 'POST');
+    }
+    if (success) success.classList.add('hidden');
+  }
+
+  function inferContactRoute(trigger) {
+    const text = (trigger?.textContent || '').trim().toLowerCase();
+    const purpose = (trigger?.dataset?.contactPurpose || trigger?.dataset?.contactTopic || '').toLowerCase();
+    if (trigger?.dataset?.interestCta === 'true') return 'interest';
+    if (/secure your spot|get started|join|cohort|interest|yes/.test(text + ' ' + purpose)) return 'interest';
+    return 'contact';
+  }
+
+  function configureContactModal(trigger) {
+    const modal = byId('contact-modal') || byId('mlc-generic-contact-modal') || byId('lets-connect-modal');
+    const form = byId('contact-form') || byId('connect-form');
+    if (!modal || !form) return false;
+    const route = form.id === 'connect-form' ? 'interest' : inferContactRoute(trigger);
+    form.dataset.formRoute = route;
+    form.dataset.formType = route === 'interest' ? 'General Interest' : 'Contact / Questions';
+    form.setAttribute('action', ENDPOINTS[route]);
+    form.setAttribute('method', 'POST');
+    const topic = trigger?.dataset?.contactTopic || trigger?.dataset?.contactPurpose || trigger?.textContent?.trim() || '';
+    if (topic) form.dataset.sourceCta = topic;
+    openModal(modal);
+    const success = byId('form-success');
+    if (success) success.classList.add('hidden');
+    form.classList.remove('hidden');
+    return true;
+  }
+
+  document.addEventListener('click', function (event) {
+    const trialTrigger = event.target.closest('.open-trial-modal-trigger, [data-open-trial-modal]');
+    if (trialTrigger) {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      resetTrialModal();
+      openModal(byId('trial-lesson-modal'));
+      return;
+    }
+
+    const trialClose = event.target.closest('.close-trial-modal, #close-trial-modal, [data-close-trial-modal]');
+    if (trialClose) {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      closeModal(byId('trial-lesson-modal'));
+      return;
+    }
+
+    const modalBackdrop = byId('trial-lesson-modal');
+    if (modalBackdrop && event.target === modalBackdrop) {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      closeModal(modalBackdrop);
+      return;
+    }
+
+    const contactTrigger = event.target.closest('a[href="#contact-modal"], .open-modal-trigger, .open-contact-modal-trigger, [data-contact-topic], [data-contact-purpose]');
+    if (contactTrigger) {
+      if (configureContactModal(contactTrigger)) {
+        event.preventDefault();
+        event.stopImmediatePropagation();
+      }
+    }
+  }, true);
+
+  function formDataObject(form) {
+    const data = Object.fromEntries(new FormData(form).entries());
+    data.submitted_from = window.location.href;
+    data.submitted_at = new Date().toISOString();
+
+    if (form.id === 'trial-lesson-form') {
+      data.form_type = 'Trial Lesson Request';
+      data.full_name = data.full_name || valueById('trial-name');
+      data.email = data.email || valueById('trial-email');
+      data.contact_method = data.contact_method || valueById('trial-contact') || 'Not specified';
+      data.interested_language = data.interested_language || valueById('trial-language') || 'Not specified';
+      data.current_level = data.current_level || valueById('trial-level') || 'Not specified';
+      data.time_zone = data.time_zone || valueById('trial-timezone') || 'Not specified';
+      data.preferred_times = data.preferred_times || valueById('trial-availability') || 'Not specified';
+      data.learning_goal = data.learning_goal || valueById('trial-goal') || 'Not specified';
+    }
+
+    if (form.id === 'enrollment-form') {
+      data.form_type = 'Enrollment Application';
+      data.selected_program = valueById('selected-program') || data.selected_program || 'Not specified';
+      data.full_name = data.full_name || valueById('applicant-name');
+      data.email = data.email || valueById('applicant-email');
+      data.country = data.country || valueById('applicant-country') || 'Not specified';
+      data.time_zone = data.time_zone || valueById('applicant-timezone') || 'Not specified';
+      data.current_ability = data.current_ability || valueById('applicant-level') || 'Not specified';
+      data.age_range = data.age_range || valueById('applicant-age') || 'Not specified';
+      data.motivations = qsa('.motivation:checked').map(x => x.value).join(', ') || 'Not specified';
+      data.priority_skills = qsa('.priority:checked').map(x => x.value).join(', ') || 'Not specified';
+      data.preferred_days = qsa('.day-circle.bg-primary').map(x => x.dataset.day || x.textContent.trim()).join(', ') || 'Not specified';
+      data.time_range = qsa('.time-range:checked').map(x => x.value).join(', ') || 'Not specified';
+      data.specific_topics = valueById('applicant-topics') || 'Not specified';
+      data.success_looks_like = valueById('applicant-success') || 'Not specified';
+    }
+
+    if (form.id === 'contact-form') {
+      const route = form.dataset.formRoute || 'contact';
+      data.form_type = route === 'interest' ? 'General Interest' : 'Contact / Questions';
+      data.source_cta = form.dataset.sourceCta || 'Not specified';
+    }
+
+    if (form.id === 'connect-form') {
+      data.form_type = 'General Interest';
+    }
+
+    if (form.id === 'payment-contact-form') {
+      data.form_type = 'Contact / Questions';
+    }
+    return data;
+  }
+
+  function endpointFor(form) {
+    if (form.id === 'enrollment-form') return ENDPOINTS.enrollment;
+    if (form.id === 'trial-lesson-form') return ENDPOINTS.trial;
+    if (form.id === 'connect-form') return ENDPOINTS.interest;
+    if (form.id === 'payment-contact-form') return ENDPOINTS.contact;
+    if (form.id === 'contact-form') return ENDPOINTS[form.dataset.formRoute || 'contact'] || ENDPOINTS.contact;
+    return form.getAttribute('action') || ENDPOINTS.contact;
+  }
+
+  async function post(endpoint, payload) {
+    const response = await fetch(endpoint, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+    if (!response.ok) throw new Error('Formspree submission failed.');
+    return response;
+  }
+
+  function setLoading(form, loading) {
+    const button = form.querySelector('button[type="submit"]');
+    if (!button) return;
+    if (loading) {
+      button.dataset.originalText = button.textContent;
+      button.disabled = true;
+      button.textContent = 'Submitting...';
+    } else {
+      button.disabled = false;
+      button.textContent = button.dataset.originalText || button.textContent;
+    }
+  }
+
+  function showSuccess(form) {
+    if (form.id === 'trial-lesson-form') {
+      const success = byId('trial-form-success') || byId('trial-lesson-success');
+      form.classList.add('hidden');
+      if (success) success.classList.remove('hidden');
+      return;
+    }
+    const success = byId('form-success') || byId('payment-contact-success');
+    if (success) {
+      form.classList.add('hidden');
+      success.classList.remove('hidden');
+    } else {
+      alert('Thank you. Your request was submitted successfully.');
+    }
+  }
+
+  document.addEventListener('submit', async function (event) {
+    const form = event.target;
+    if (!form || !handledFormIds.has(form.id)) return;
+    event.preventDefault();
+    event.stopImmediatePropagation();
+
+    setFormActions();
+    const endpoint = endpointFor(form);
+    const payload = formDataObject(form);
+    setLoading(form, true);
+
+    try {
+      if (form.id === 'enrollment-form') {
+        sessionStorage.setItem('mlcEnrollmentApplication', JSON.stringify(payload));
+      }
+      await post(endpoint, payload);
+      if (form.id === 'enrollment-form') {
+        const params = new URLSearchParams({ program: payload.selected_program || '', name: payload.full_name || '', email: payload.email || '' });
+        window.location.href = 'payment.html?' + params.toString();
+        return;
+      }
+      showSuccess(form);
+      form.reset();
+    } catch (error) {
+      alert('We could not submit your request yet. Please try again.');
+    } finally {
+      setLoading(form, false);
+    }
+  }, true);
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setFormActions);
+  } else {
+    setFormActions();
+  }
+})();
+</script>
+
+</body>
+</html>
