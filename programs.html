@@ -912,8 +912,8 @@ Preferred Trial Times: ${document.getElementById('trial-availability').value || 
 <script data-version="MLC-FORMSPREE-ROUTER-v10">
 (function () {
   const ENDPOINTS = {
-    enrollment: 'https://formspree.io/f/mykapgdk',
-    trial: 'https://formspree.io/f/mgobzeze',
+    enrollment: 'https://script.google.com/macros/s/AKfycbyOfItvWNDzTFScH8cENyKqXRmbQr1n6j1KEsRmyhKLnFFwLnLw7wZImqm-AX0mgQoF/exec',
+    trial: 'https://script.google.com/macros/s/AKfycbzSufUo-gstegEH--o9ZKk0x9mdHjianoGEckFeBCWnje6GOqmlwwOGCiqhufwusV10/exec',
     contact: 'https://formspree.io/f/xzdqvbww',
     interest: 'https://formspree.io/f/mojzlqbo'
   };
@@ -1123,15 +1123,28 @@ Preferred Trial Times: ${document.getElementById('trial-availability').value || 
     return form.getAttribute('action') || ENDPOINTS.contact;
   }
 
-  async function post(endpoint, payload) {
-    const response = await fetch(endpoint, {
+async function post(endpoint, payload, formId = '') {
+  if (formId === 'enrollment-form' || formId === 'trial-lesson-form') {
+    await fetch(endpoint, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      mode: 'no-cors',
+      headers: {
+        'Content-Type': 'text/plain;charset=utf-8'
+      },
       body: JSON.stringify(payload)
     });
-    if (!response.ok) throw new Error('Formspree submission failed.');
-    return response;
+    return;
   }
+
+  const response = await fetch(endpoint, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+    body: JSON.stringify(payload)
+  });
+
+  if (!response.ok) throw new Error('Form submission failed.');
+  return response;
+}
 
   function setLoading(form, loading) {
     const button = form.querySelector('button[type="submit"]');
