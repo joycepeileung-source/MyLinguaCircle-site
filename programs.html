@@ -1,0 +1,1202 @@
+<!DOCTYPE html>
+
+<html class="light scroll-smooth" lang="en" style=""><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Programs | MyLinguaCircle</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-background": "#1b1c1a",
+                    "inverse-surface": "#2f312e",
+                    "on-tertiary-fixed-variant": "#5f4100",
+                    "on-secondary-fixed": "#3d0700",
+                    "tertiary-fixed-dim": "#fbbc44",
+                    "on-tertiary": "#ffffff",
+                    "on-primary-fixed": "#000d60",
+                    "background": "#faf9f5",
+                    "on-primary-fixed-variant": "#1d34ba",
+                    "surface-dim": "#dbdad6",
+                    "on-primary": "#ffffff",
+                    "secondary": "#a53b22",
+                    "error-container": "#ffdad6",
+                    "error": "#ba1a1a",
+                    "tertiary-fixed": "#ffdeab",
+                    "on-secondary": "#ffffff",
+                    "surface-container-highest": "#e3e2df",
+                    "primary-fixed-dim": "#bbc3ff",
+                    "tertiary": "#624300",
+                    "surface-bright": "#faf9f5",
+                    "surface": "#faf9f5",
+                    "inverse-primary": "#bbc3ff",
+                    "on-error-container": "#93000a",
+                    "tertiary-container": "#805900",
+                    "outline-variant": "#c5c5d7",
+                    "surface-container-high": "#e9e8e4",
+                    "on-error": "#ffffff",
+                    "primary-container": "#3e52d5",
+                    "on-secondary-fixed-variant": "#84240d",
+                    "on-secondary-container": "#711601",
+                    "surface-tint": "#3b4fd2",
+                    "on-primary-container": "#d7daff",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary-fixed": "#271900",
+                    "on-surface-variant": "#454654",
+                    "inverse-on-surface": "#f2f1ed",
+                    "secondary-fixed-dim": "#ffb4a3",
+                    "primary-fixed": "#dfe0ff",
+                    "secondary-fixed": "#ffdad2",
+                    "secondary-container": "#fe7d5e",
+                    "outline": "#757686",
+                    "on-tertiary-container": "#ffd694",
+                    "surface-container": "#efeeea",
+                    "surface-container-low": "#f4f4f0",
+                    "on-surface": "#1b1c1a",
+                    "surface-variant": "#e3e2df",
+                    "primary": "#2036bd"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "stack-sm": "12px",
+                    "margin-desktop": "64px",
+                    "gutter": "24px",
+                    "stack-md": "24px",
+                    "stack-lg": "48px",
+                    "margin-mobile": "20px",
+                    "base": "8px",
+                    "container-max": "1200px"
+            },
+            "fontFamily": {
+                    "label-md": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-md": ["Outfit"],
+                    "headline-lg": ["Outfit"],
+                    "display-lg": ["Outfit"],
+                    "body-lg": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "headline-lg-mobile": ["Outfit"]
+            },
+            "fontSize": {
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.04em", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "letterSpacing": "0", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "0.02em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "letterSpacing": "0", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0", "fontWeight": "500"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "letterSpacing": "0.01em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .glass-nav {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .program-card {
+            box-shadow: 0px 10px 30px rgba(62, 82, 213, 0.05);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .program-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0px 15px 40px rgba(62, 82, 213, 0.08);
+        }
+        .modal-input {
+            background-color: #F6F6F6;
+            border: 1px solid #E5E5E5;
+            transition: border-color 0.2s;
+        }
+        .modal-input:focus {
+            outline: none;
+            border-color: #2036bd;
+            background-color: #ffffff;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md overflow-x-hidden">
+<!-- Enrollment Application Modal -->
+<div aria-modal="true" class="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-on-background/40 backdrop-blur-sm hidden" id="contact-modal" role="dialog">
+<div class="bg-surface-container-lowest w-full max-w-5xl max-h-[90vh] rounded-[2rem] shadow-2xl overflow-hidden relative flex flex-col">
+<button aria-label="Close enrollment application" class="absolute top-5 right-5 text-on-surface-variant hover:text-primary transition-colors z-10" id="close-modal"><span class="material-symbols-outlined text-2xl">close</span></button>
+<div class="p-6 md:p-8 border-b border-outline-variant/20 bg-surface-container-lowest"><p class="text-label-sm font-label-sm text-secondary uppercase tracking-widest mb-2">Enrollment Application</p><h2 class="font-headline-lg text-headline-lg text-primary">Apply for a MyLinguaCircle cohort</h2><p class="text-on-surface-variant mt-2 max-w-2xl">Tell us which circle fits you and when you can join. After you submit, we will receive your application and you will continue to the payment review page.</p></div>
+<div class="overflow-y-auto p-6 md:p-8 bg-surface"><form action="https://formspree.io/f/mykapgdk" class="space-y-8" data-form-route="enrollment" data-form-type="Enrollment Application" id="enrollment-form" method="POST">
+<section class="bg-white rounded-2xl border border-outline-variant/30 p-6 md:p-8"><div class="flex items-center mb-6"><div class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-bold mr-3">1</div><h3 class="font-headline-md text-primary">Program Selection</h3></div><div class="space-y-6"><div><h4 class="text-xs font-bold text-on-surface-variant uppercase tracking-widest mb-3">Mandarin Track</h4><div class="grid grid-cols-1 md:grid-cols-2 gap-4"><button class="selection-card text-left p-5 rounded-xl border-2 border-primary bg-primary/5 transition-all" data-enrollment-program-card="true" data-program="Beginner Mandarin Circle - Level 1 - 5 Weeks - Launch Price $549 USD (Regular $732 USD - 25% off)" type="button"><span class="text-xs font-semibold text-primary uppercase tracking-wider">Level 1 - 5 Weeks</span><h5 class="font-bold text-lg mt-1">Beginner Mandarin Circle</h5><p class="text-sm text-on-surface-variant">Foundational fluency</p><div class="mt-3"><p class="text-xs text-on-surface-variant line-through">$732 USD</p><p class="font-bold text-primary">$549 USD <span class="text-xs font-bold text-secondary ml-1">25% off</span></p></div></button><button class="selection-card text-left p-5 rounded-xl border-2 border-outline-variant/40 hover:border-primary transition-all" data-enrollment-program-card="true" data-program="Intermediate Mandarin Circle - Level 2 - 8 Weeks - Launch Price $799 USD (Regular $1,065 USD - 25% off)" type="button"><span class="text-xs font-semibold text-primary uppercase tracking-wider">Level 2 - 8 Weeks</span><h5 class="font-bold text-lg mt-1">Intermediate Mandarin Circle</h5><p class="text-sm text-on-surface-variant">Conversational flow</p><div class="mt-3"><p class="text-xs text-on-surface-variant line-through">$1,065 USD</p><p class="font-bold text-primary">$799 USD <span class="text-xs font-bold text-secondary ml-1">25% off</span></p></div></button></div></div><div><h4 class="text-xs font-bold text-on-surface-variant uppercase tracking-widest mb-3">Cantonese Track</h4><div class="grid grid-cols-1 md:grid-cols-2 gap-4"><button class="selection-card text-left p-5 rounded-xl border-2 border-outline-variant/40 hover:border-primary transition-all" data-enrollment-program-card="true" data-program="Beginner Cantonese Circle - Level 1 - 5 Weeks - Launch Price $549 USD (Regular $732 USD - 25% off)" type="button"><span class="text-xs font-semibold text-primary uppercase tracking-wider">Level 1 - 5 Weeks</span><h5 class="font-bold text-lg mt-1">Beginner Cantonese Circle</h5><p class="text-sm text-on-surface-variant">Hong Kong daily life and culture</p><div class="mt-3"><p class="text-xs text-on-surface-variant line-through">$732 USD</p><p class="font-bold text-primary">$549 USD <span class="text-xs font-bold text-secondary ml-1">25% off</span></p></div></button><button class="selection-card text-left p-5 rounded-xl border-2 border-outline-variant/40 hover:border-primary transition-all" data-enrollment-program-card="true" data-program="Intermediate Cantonese Circle - Level 2 - 8 Weeks - Launch Price $799 USD (Regular $1,065 USD - 25% off)" type="button"><span class="text-xs font-semibold text-primary uppercase tracking-wider">Level 2 - 8 Weeks</span><h5 class="font-bold text-lg mt-1">Intermediate Cantonese Circle</h5><p class="text-sm text-on-surface-variant">Natural speech bridge</p><div class="mt-3"><p class="text-xs text-on-surface-variant line-through">$1,065 USD</p><p class="font-bold text-primary">$799 USD <span class="text-xs font-bold text-secondary ml-1">25% off</span></p></div></button></div></div><div><h4 class="text-xs font-bold text-on-surface-variant uppercase tracking-widest mb-3">English Track</h4><div class="grid grid-cols-1 md:grid-cols-2 gap-4"><button class="selection-card text-left p-5 rounded-xl border-2 border-outline-variant/40 hover:border-primary transition-all" data-enrollment-program-card="true" data-program="English Confidence Circle - Level 1 - 5 Weeks - Launch Price $549 USD (Regular $732 USD - 25% off)" type="button"><span class="text-xs font-semibold text-primary uppercase tracking-wider">Level 1 - 5 Weeks</span><h5 class="font-bold text-lg mt-1">English Confidence Circle</h5><p class="text-sm text-on-surface-variant">Speak without freezing</p><div class="mt-3"><p class="text-xs text-on-surface-variant line-through">$732 USD</p><p class="font-bold text-primary">$549 USD <span class="text-xs font-bold text-secondary ml-1">25% off</span></p></div></button><button class="selection-card text-left p-5 rounded-xl border-2 border-outline-variant/40 hover:border-primary transition-all" data-enrollment-program-card="true" data-program="English Communication Circle - Level 2 - 8 Weeks - Launch Price $799 USD (Regular $1,065 USD - 25% off)" type="button"><span class="text-xs font-semibold text-primary uppercase tracking-wider">Level 2 - 8 Weeks</span><h5 class="font-bold text-lg mt-1">English Communication Circle</h5><p class="text-sm text-on-surface-variant">Professional mastery</p><div class="mt-3"><p class="text-xs text-on-surface-variant line-through">$1,065 USD</p><p class="font-bold text-primary">$799 USD <span class="text-xs font-bold text-secondary ml-1">25% off</span></p></div></button></div></div></div><input id="selected-program" type="hidden" value="Beginner Mandarin Circle - Level 1 - 5 Weeks - Launch Price $549 USD (Regular $732 USD - 25% off)"/><div class="hidden mt-5 text-center" id="change-enrollment-program-wrapper"><button class="text-primary font-bold text-sm hover:underline" id="change-enrollment-program" type="button">Change program</button></div></section>
+<section class="bg-white rounded-2xl border border-outline-variant/30 p-6 md:p-8"><div class="flex items-center mb-6"><div class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-bold mr-3">2</div><h3 class="font-headline-md text-primary">About You</h3></div><div class="grid grid-cols-1 md:grid-cols-2 gap-5"><label class="space-y-1"><span class="block text-sm font-semibold text-on-surface">Full Name</span><input class="w-full rounded-xl border-outline-variant bg-surface-container-low focus:ring-primary focus:border-primary" id="applicant-name" placeholder="Your name" required="" type="text"/></label><label class="space-y-1"><span class="block text-sm font-semibold text-on-surface">Email Address</span><input class="w-full rounded-xl border-outline-variant bg-surface-container-low focus:ring-primary focus:border-primary" id="applicant-email" placeholder="your@email.com" required="" type="email"/></label><label class="space-y-1"><span class="block text-sm font-semibold text-on-surface">Country</span><input class="w-full rounded-xl border-outline-variant bg-surface-container-low focus:ring-primary focus:border-primary" id="applicant-country" placeholder="Country" type="text"/></label><label class="space-y-1"><span class="block text-sm font-semibold text-on-surface">Time Zone</span><select class="w-full rounded-xl border-outline-variant bg-surface-container-low focus:ring-primary focus:border-primary" id="applicant-timezone"><option value="">Select your country / UTC time zone</option><optgroup label="Popular time zones"><option value="United States - Pacific (UTC-08:00)">United States - Pacific (UTC-08:00)</option><option value="United States - Mountain (UTC-07:00)">United States - Mountain (UTC-07:00)</option><option value="United States - Central (UTC-06:00)">United States - Central (UTC-06:00)</option><option value="United States - Eastern (UTC-05:00)">United States - Eastern (UTC-05:00)</option><option value="Canada - Pacific (UTC-08:00)">Canada - Pacific (UTC-08:00)</option><option value="Canada - Eastern (UTC-05:00)">Canada - Eastern (UTC-05:00)</option><option value="United Kingdom (UTC+00:00)">United Kingdom (UTC+00:00)</option><option value="China / Hong Kong / Taiwan / Singapore (UTC+08:00)">China / Hong Kong / Taiwan / Singapore (UTC+08:00)</option><option value="Japan / Korea (UTC+09:00)">Japan / Korea (UTC+09:00)</option><option value="Australia - Sydney/Melbourne (UTC+10:00)">Australia - Sydney/Melbourne (UTC+10:00)</option></optgroup><optgroup label="Global time zones"><option value="International Date Line West (UTC-12:00)">International Date Line West (UTC-12:00)</option><option value="American Samoa (UTC-11:00)">American Samoa (UTC-11:00)</option><option value="Hawaii, United States (UTC-10:00)">Hawaii, United States (UTC-10:00)</option><option value="Alaska, United States (UTC-09:00)">Alaska, United States (UTC-09:00)</option><option value="Mexico - Baja California (UTC-08:00)">Mexico - Baja California (UTC-08:00)</option><option value="Mexico - Mountain / Chihuahua (UTC-07:00)">Mexico - Mountain / Chihuahua (UTC-07:00)</option><option value="Mexico City / Guatemala / Costa Rica (UTC-06:00)">Mexico City / Guatemala / Costa Rica (UTC-06:00)</option><option value="Colombia / Peru / Ecuador / Panama (UTC-05:00)">Colombia / Peru / Ecuador / Panama (UTC-05:00)</option><option value="Venezuela / Bolivia / Dominican Republic (UTC-04:00)">Venezuela / Bolivia / Dominican Republic (UTC-04:00)</option><option value="Argentina / Brazil - São Paulo / Chile (UTC-03:00)">Argentina / Brazil - São Paulo / Chile (UTC-03:00)</option><option value="South Georgia / Mid-Atlantic (UTC-02:00)">South Georgia / Mid-Atlantic (UTC-02:00)</option><option value="Azores / Cape Verde (UTC-01:00)">Azores / Cape Verde (UTC-01:00)</option><option value="Ghana / Iceland / Portugal (UTC+00:00)">Ghana / Iceland / Portugal (UTC+00:00)</option><option value="France / Germany / Spain / Italy / Nigeria (UTC+01:00)">France / Germany / Spain / Italy / Nigeria (UTC+01:00)</option><option value="South Africa / Egypt / Greece / Turkey (UTC+02:00)">South Africa / Egypt / Greece / Turkey (UTC+02:00)</option><option value="Saudi Arabia / Kenya / Qatar (UTC+03:00)">Saudi Arabia / Kenya / Qatar (UTC+03:00)</option><option value="Iran (UTC+03:30)">Iran (UTC+03:30)</option><option value="United Arab Emirates / Oman / Georgia (UTC+04:00)">United Arab Emirates / Oman / Georgia (UTC+04:00)</option><option value="Afghanistan (UTC+04:30)">Afghanistan (UTC+04:30)</option><option value="Pakistan / Maldives (UTC+05:00)">Pakistan / Maldives (UTC+05:00)</option><option value="India / Sri Lanka (UTC+05:30)">India / Sri Lanka (UTC+05:30)</option><option value="Nepal (UTC+05:45)">Nepal (UTC+05:45)</option><option value="Bangladesh / Bhutan (UTC+06:00)">Bangladesh / Bhutan (UTC+06:00)</option><option value="Myanmar (UTC+06:30)">Myanmar (UTC+06:30)</option><option value="Thailand / Vietnam / Indonesia - Jakarta (UTC+07:00)">Thailand / Vietnam / Indonesia - Jakarta (UTC+07:00)</option><option value="Malaysia / Philippines / Indonesia - Bali (UTC+08:00)">Malaysia / Philippines / Indonesia - Bali (UTC+08:00)</option><option value="Australia - Adelaide / Darwin (UTC+09:30)">Australia - Adelaide / Darwin (UTC+09:30)</option><option value="Guam / Papua New Guinea (UTC+10:00)">Guam / Papua New Guinea (UTC+10:00)</option><option value="Solomon Islands / New Caledonia (UTC+11:00)">Solomon Islands / New Caledonia (UTC+11:00)</option><option value="New Zealand / Fiji (UTC+12:00)">New Zealand / Fiji (UTC+12:00)</option><option value="Tonga / Samoa (UTC+13:00)">Tonga / Samoa (UTC+13:00)</option><option value="Kiribati - Line Islands (UTC+14:00)">Kiribati - Line Islands (UTC+14:00)</option></optgroup></select></label><label class="space-y-1"><span class="block text-sm font-semibold text-on-surface">Current Ability</span><select class="w-full rounded-xl border-outline-variant bg-surface-container-low focus:ring-primary focus:border-primary" id="applicant-level"><option>Complete Beginner</option><option>Elementary</option><option>Intermediate</option><option>Advanced</option></select></label><label class="space-y-1"><span class="block text-sm font-semibold text-on-surface">Age Range</span><select class="w-full rounded-xl border-outline-variant bg-surface-container-low focus:ring-primary focus:border-primary" id="applicant-age"><option>Under 18</option><option>18-24</option><option>25-34</option><option>35-44</option><option>45+</option></select></label></div></section>
+<section class="bg-white rounded-2xl border border-outline-variant/30 p-6 md:p-8"><div class="flex items-center mb-6"><div class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-bold mr-3">3</div><h3 class="font-headline-md text-primary">Goals &amp; Focus</h3></div><div class="space-y-5"><div><p class="text-sm font-semibold mb-3">Primary Motivations</p><div class="grid grid-cols-2 md:grid-cols-4 gap-3"><label class="flex items-center text-sm"><input class="motivation rounded text-primary focus:ring-primary mr-2" type="checkbox" value="Travel"/> Travel</label><label class="flex items-center text-sm"><input class="motivation rounded text-primary focus:ring-primary mr-2" type="checkbox" value="Work"/> Work</label><label class="flex items-center text-sm"><input class="motivation rounded text-primary focus:ring-primary mr-2" type="checkbox" value="Culture"/> Culture</label><label class="flex items-center text-sm"><input class="motivation rounded text-primary focus:ring-primary mr-2" type="checkbox" value="Other"/> Other</label></div></div><div><p class="text-sm font-semibold mb-3">Priority Skills</p><div class="grid grid-cols-2 md:grid-cols-4 gap-3"><label class="flex items-center text-sm"><input checked="" class="priority rounded text-primary focus:ring-primary mr-2" type="checkbox" value="Speaking"/> Speaking</label><label class="flex items-center text-sm"><input class="priority rounded text-primary focus:ring-primary mr-2" type="checkbox" value="Listening"/> Listening</label><label class="flex items-center text-sm"><input class="priority rounded text-primary focus:ring-primary mr-2" type="checkbox" value="Writing"/> Writing</label><label class="flex items-center text-sm"><input class="priority rounded text-primary focus:ring-primary mr-2" type="checkbox" value="Confidence"/> Confidence</label></div></div></div></section>
+<section class="bg-white rounded-2xl border border-outline-variant/30 p-6 md:p-8"><div class="flex items-center mb-6"><div class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-bold mr-3">4</div><h3 class="font-headline-md text-primary">Availability</h3></div><p class="text-sm text-on-surface-variant mb-5 bg-surface-container-low p-3 rounded-xl"><strong>Please note:</strong> All scheduled sessions are based on San Diego, US Pacific Time.</p><div class="space-y-5"><div><p class="text-sm font-semibold mb-3">Preferred Days</p><div class="flex flex-wrap gap-2"><button class="day-circle rounded-full border border-outline-variant w-10 h-10 font-semibold" data-day="Monday" type="button">M</button><button class="day-circle rounded-full border border-outline-variant w-10 h-10 font-semibold" data-day="Tuesday" type="button">T</button><button class="day-circle rounded-full border border-outline-variant w-10 h-10 font-semibold" data-day="Wednesday" type="button">W</button><button class="day-circle rounded-full border border-outline-variant w-10 h-10 font-semibold" data-day="Thursday" type="button">T</button><button class="day-circle rounded-full border border-outline-variant w-10 h-10 font-semibold" data-day="Friday" type="button">F</button><button class="day-circle rounded-full border border-outline-variant w-10 h-10 font-semibold" data-day="Saturday" type="button">S</button><button class="day-circle rounded-full border border-outline-variant w-10 h-10 font-semibold" data-day="Sunday" type="button">S</button></div></div><div><p class="text-sm font-semibold mb-3">Time Range</p><div class="grid grid-cols-1 md:grid-cols-3 gap-3"><label class="border border-outline-variant rounded-xl p-4 flex justify-between gap-3"><span><strong class="block text-sm">Morning</strong><span class="text-xs text-on-surface-variant">08:00-12:00</span></span><input class="time-range rounded text-primary" type="checkbox" value="Morning"/></label><label class="border border-outline-variant rounded-xl p-4 flex justify-between gap-3"><span><strong class="block text-sm">Afternoon</strong><span class="text-xs text-on-surface-variant">13:00-17:00</span></span><input class="time-range rounded text-primary" type="checkbox" value="Afternoon"/></label><label class="border border-outline-variant rounded-xl p-4 flex justify-between gap-3"><span><strong class="block text-sm">Evening</strong><span class="text-xs text-on-surface-variant">18:00-21:00</span></span><input class="time-range rounded text-primary" type="checkbox" value="Evening"/></label></div></div></div></section>
+<section class="bg-white rounded-2xl border border-outline-variant/30 p-6 md:p-8"><div class="flex items-center mb-6"><div class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-bold mr-3">5</div><h3 class="font-headline-md text-primary">Final Reflection</h3></div><label class="block space-y-1"><span class="block text-sm font-semibold text-on-surface">At the end of this program, what would success look like to you personally?</span><textarea class="w-full rounded-xl border-outline-variant bg-surface-container-low focus:ring-primary focus:border-primary" id="applicant-success" placeholder="I'll feel successful when I can..." rows="4"></textarea></label></section>
+<div class="flex justify-center pt-2"><button class="bg-primary hover:opacity-90 text-white px-10 py-4 rounded-xl font-bold text-lg shadow-lg hover:shadow-xl transition-all" type="submit">Submit Application</button></div></form><div class="hidden text-center py-12" id="form-success"><span class="material-symbols-outlined text-6xl text-primary mb-4">check_circle</span><h4 class="font-headline-md text-on-surface mb-2">Application Received</h4><p class="text-on-surface-variant text-sm">Next step: review your program and continue to payment.</p></div></div></div></div><div aria-modal="true" class="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-on-background/40 backdrop-blur-sm hidden" id="lets-connect-modal" role="dialog">
+<div class="bg-surface-container-lowest w-full max-w-2xl rounded-xl shadow-2xl overflow-hidden animate-in fade-in zoom-in duration-300">
+<div class="flex flex-col md:flex-row">
+<div class="bg-primary p-8 text-on-primary md:w-5/12 flex flex-col justify-between">
+<div>
+<h3 class="font-headline-md text-headline-md mb-4">Let's Connect</h3>
+<p class="opacity-90 mb-8 font-body-md text-sm">Have questions about our cohort learning model? We're here to help.</p>
+<div class="space-y-4">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-xl">mail</span>
+<span class="text-sm">support@mylinguacircle.com</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-xl">public</span>
+<span class="text-sm">@mylinguacircle</span>
+</div>
+</div>
+</div>
+<div class="mt-12">
+<p class="text-[10px] uppercase tracking-widest opacity-60">Join the movement</p>
+</div>
+</div>
+<div class="p-8 md:w-7/12 relative">
+<button aria-label="Close contact form" class="absolute top-4 right-4 text-on-surface-variant hover:text-primary transition-colors" id="close-connect-modal" type="button">
+<span class="material-symbols-outlined">close</span>
+</button>
+<form action="https://formspree.io/f/xzdqvbww" class="space-y-4" data-form-route="contact" data-form-type="Contact / Questions" id="connect-form" method="POST">
+<input name="form_type" type="hidden" value="Contact / Questions"/>
+<div>
+<label class="block text-sm font-label-md text-on-surface-variant mb-1" for="connect-name">Name</label>
+<input class="w-full px-4 py-2 rounded-lg border-outline-variant bg-surface-container-low focus:ring-primary focus:border-primary transition-all" id="connect-name" name="name" placeholder="Your Name" required="" type="text"/>
+</div>
+<div>
+<label class="block text-sm font-label-md text-on-surface-variant mb-1" for="connect-email">Email</label>
+<input class="w-full px-4 py-2 rounded-lg border-outline-variant bg-surface-container-low focus:ring-primary focus:border-primary transition-all" id="connect-email" name="email" placeholder="your@email.com" required="" type="email"/>
+</div>
+<div>
+<label class="block text-sm font-label-md text-on-surface-variant mb-1" for="connect-message">Message</label>
+<textarea class="w-full px-4 py-2 rounded-lg border-outline-variant bg-surface-container-low focus:ring-primary focus:border-primary transition-all resize-none" id="connect-message" name="message" placeholder="How can we help?" required="" rows="4"></textarea>
+</div>
+<button class="w-full bg-primary text-on-primary py-3 rounded-lg font-label-md hover:bg-primary-container transition-all active:scale-95 flex items-center justify-center gap-2" type="submit">
+<span>Send Message</span>
+<span class="material-symbols-outlined text-sm">send</span>
+</button>
+</form>
+<div class="hidden text-center py-8" id="connect-form-success">
+<span class="material-symbols-outlined text-6xl text-primary mb-4">check_circle</span>
+<h4 class="font-headline-md text-on-surface mb-2">Message Sent!</h4>
+<p class="text-on-surface-variant text-sm">Thank you. Your message was submitted successfully.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div aria-modal="true" class="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-on-background/40 backdrop-blur-sm hidden" id="cohort-interest-modal" role="dialog">
+<div class="bg-surface-container-lowest w-full max-w-2xl rounded-[2rem] shadow-2xl overflow-hidden animate-in fade-in zoom-in duration-300 relative">
+<button class="absolute top-6 right-6 text-on-surface-variant hover:text-primary transition-colors z-10" id="close-cohort-modal" type="button">
+<span class="material-symbols-outlined text-2xl">close</span>
+</button>
+<div class="p-8 md:p-12">
+<div class="mb-8">
+<h3 class="font-display-lg text-headline-lg text-primary mb-2">Join the Next Cohort</h3>
+<p class="font-body-md text-on-surface-variant">Tell us a bit about your journey and we'll get back to you with the next steps.</p>
+</div>
+<form action="https://formspree.io/f/mojzlqbo" class="space-y-6" data-form-route="interest" data-form-type="General Interest" id="cohort-interest-form" method="POST">
+<input name="form_type" type="hidden" value="General Interest"/>
+<div class="space-y-2">
+<label class="block text-sm font-semibold text-on-surface" for="cohort-name">Full Name</label>
+<input class="w-full px-4 py-3 rounded-xl modal-input font-body-md" id="cohort-name" name="full_name" placeholder="Your Name" required="" type="text"/>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="space-y-2">
+<label class="block text-sm font-semibold text-on-surface" for="cohort-language">Interested Language</label>
+<select class="w-full px-4 py-3 rounded-xl modal-input font-body-md" id="cohort-language" name="interested_language" required="">
+<option value="Mandarin">Mandarin</option>
+<option value="Cantonese">Cantonese</option>
+<option value="English">English</option>
+</select>
+</div>
+<div class="space-y-2">
+<label class="block text-sm font-semibold text-on-surface" for="cohort-level">Language Level</label>
+<select class="w-full px-4 py-3 rounded-xl modal-input font-body-md" id="cohort-level" name="language_level" required="">
+<option value="Complete Beginner">Complete Beginner</option>
+<option value="Beginner">Beginner</option>
+<option value="Intermediate">Intermediate</option>
+<option value="Advanced">Advanced</option>
+</select>
+</div>
+</div>
+<div class="space-y-2">
+<label class="block text-sm font-semibold text-on-surface" for="cohort-contact">Email or Phone Number</label>
+<input class="w-full px-4 py-3 rounded-xl modal-input font-body-md" id="cohort-contact" name="contact_detail" placeholder="your@email.com or +1..." required="" type="text"/>
+</div>
+<input name="message" type="hidden" value="Join the Next Cohort interest"/>
+<button class="w-full bg-primary text-white py-4 rounded-full font-bold text-lg hover:opacity-90 transition-all active:scale-[0.98] mt-4" type="submit">
+Submit Interest
+</button>
+</form>
+<div class="hidden text-center py-8" id="cohort-form-success">
+<span class="material-symbols-outlined text-6xl text-primary mb-4">check_circle</span>
+<h4 class="font-headline-md text-on-surface mb-2">Interest Submitted!</h4>
+<p class="text-on-surface-variant text-sm">Thank you. We received your interest and will get back to you soon.</p>
+</div>
+</div>
+</div>
+</div>
+<header class="w-full top-0 sticky z-50 bg-background/80 backdrop-blur-md border-b border-outline-variant/30">
+<nav class="flex items-center justify-between w-full px-margin-mobile md:px-margin-desktop py-4 max-w-container-max mx-auto h-20">
+<a class="text-headline-md font-headline-md font-bold text-primary" href="index.html">MyLinguaCircle</a>
+<div class="hidden md:flex items-center gap-8"><a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-200 font-label-md" href="index.html">Home</a><a class="text-primary font-bold border-b-2 border-primary pb-1 font-label-md" href="programs.html">Programs</a><a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-200 font-label-md" href="about.html">About</a></div>
+<button class="hidden md:inline-flex items-center justify-center bg-secondary text-on-secondary px-5 py-2.5 rounded-full font-label-md font-bold hover:opacity-90 transition-all open-trial-modal-trigger" type="button">Trial Lesson</button>
+</nav>
+<div class="md:hidden flex justify-center items-center gap-4 px-margin-mobile pb-4 font-label-sm"><a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-200" href="index.html">Home</a><a class="text-primary font-bold" href="programs.html">Programs</a><a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-200" href="about.html">About</a><button class="bg-secondary text-on-secondary px-4 py-2 rounded-full font-label-sm font-bold hover:opacity-90 transition-all open-trial-modal-trigger" type="button">Trial Lesson</button></div>
+</header>
+<!-- Trial Lesson Modal -->
+<div aria-modal="true" class="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-on-background/40 backdrop-blur-sm hidden" id="trial-lesson-modal" role="dialog">
+<div class="bg-surface-container-lowest w-full max-w-2xl max-h-[90vh] rounded-[2rem] shadow-2xl overflow-hidden animate-fade-in relative flex flex-col">
+<button aria-label="Close trial lesson form" class="absolute top-6 right-6 text-on-surface-variant hover:text-primary transition-colors z-10" id="close-trial-modal" type="button">
+<span class="material-symbols-outlined text-2xl">close</span>
+</button>
+<div class="p-8 md:p-12 overflow-y-auto">
+<div class="mb-8">
+<p class="text-label-sm font-label-sm text-secondary uppercase tracking-widest mb-2">Trial Lesson</p>
+<h3 class="font-display-lg text-headline-lg text-primary mb-2">Schedule a Trial Lesson</h3>
+<p class="font-body-md text-on-surface-variant">Share a few details and we’ll contact you to arrange a suitable trial lesson time.</p>
+</div>
+<form action="https://formspree.io/f/mgobzeze" class="space-y-5" data-form-route="trial" data-form-type="Trial Lesson Request" id="trial-lesson-form" method="POST"><input name="form_type" type="hidden" value="Trial Lesson Request"/>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<label class="space-y-2"><span class="block text-sm font-semibold text-on-surface">Full Name</span><input class="w-full px-4 py-3 rounded-xl font-body-md bg-surface-container-low border border-outline-variant/30 focus:ring-2 focus:ring-primary focus:border-transparent outline-none" id="trial-name" name="full_name" placeholder="Your name" required="" type="text"/></label>
+<label class="space-y-2"><span class="block text-sm font-semibold text-on-surface">Email Address</span><input class="w-full px-4 py-3 rounded-xl font-body-md bg-surface-container-low border border-outline-variant/30 focus:ring-2 focus:ring-primary focus:border-transparent outline-none" id="trial-email" name="email" placeholder="your@email.com" required="" type="email"/></label>
+<label class="space-y-2"><span class="block text-sm font-semibold text-on-surface">Phone / WhatsApp / WeChat / Instagram</span><input class="w-full px-4 py-3 rounded-xl font-body-md bg-surface-container-low border border-outline-variant/30 focus:ring-2 focus:ring-primary focus:border-transparent outline-none" id="trial-contact" name="contact_method" placeholder="Best way to contact you (phone, WhatsApp, WeChat, or Instagram)" type="text"/></label>
+<label class="space-y-2"><span class="block text-sm font-semibold text-on-surface">Interested Language</span><select class="w-full px-4 py-3 rounded-xl font-body-md bg-surface-container-low border border-outline-variant/30 outline-none" id="trial-language" name="interested_language" required=""><option value="Mandarin">Mandarin</option><option value="Cantonese">Cantonese</option><option value="English">English</option><option value="Not sure yet">Not sure yet</option></select></label>
+<label class="space-y-2"><span class="block text-sm font-semibold text-on-surface">Current Level</span><select class="w-full px-4 py-3 rounded-xl font-body-md bg-surface-container-low border border-outline-variant/30 outline-none" id="trial-level" name="current_level" required=""><option value="Complete Beginner">Complete Beginner</option><option value="Beginner">Beginner</option><option value="Intermediate">Intermediate</option><option value="Advanced">Advanced</option><option value="Not sure">Not sure</option></select></label>
+<label class="space-y-2"><span class="block text-sm font-semibold text-on-surface">Time Zone</span><select class="w-full px-4 py-3 rounded-xl font-body-md bg-surface-container-low border border-outline-variant/30 focus:ring-2 focus:ring-primary focus:border-transparent outline-none" id="trial-timezone" name="time_zone"><option value="">Select your country / UTC time zone</option><optgroup label="Popular time zones"><option value="United States - Pacific (UTC-08:00)">United States - Pacific (UTC-08:00)</option><option value="United States - Mountain (UTC-07:00)">United States - Mountain (UTC-07:00)</option><option value="United States - Central (UTC-06:00)">United States - Central (UTC-06:00)</option><option value="United States - Eastern (UTC-05:00)">United States - Eastern (UTC-05:00)</option><option value="Canada - Pacific (UTC-08:00)">Canada - Pacific (UTC-08:00)</option><option value="Canada - Eastern (UTC-05:00)">Canada - Eastern (UTC-05:00)</option><option value="United Kingdom (UTC+00:00)">United Kingdom (UTC+00:00)</option><option value="China / Hong Kong / Taiwan / Singapore (UTC+08:00)">China / Hong Kong / Taiwan / Singapore (UTC+08:00)</option><option value="Japan / Korea (UTC+09:00)">Japan / Korea (UTC+09:00)</option><option value="Australia - Sydney/Melbourne (UTC+10:00)">Australia - Sydney/Melbourne (UTC+10:00)</option></optgroup><optgroup label="Global time zones"><option value="International Date Line West (UTC-12:00)">International Date Line West (UTC-12:00)</option><option value="American Samoa (UTC-11:00)">American Samoa (UTC-11:00)</option><option value="Hawaii, United States (UTC-10:00)">Hawaii, United States (UTC-10:00)</option><option value="Alaska, United States (UTC-09:00)">Alaska, United States (UTC-09:00)</option><option value="Mexico - Baja California (UTC-08:00)">Mexico - Baja California (UTC-08:00)</option><option value="Mexico - Mountain / Chihuahua (UTC-07:00)">Mexico - Mountain / Chihuahua (UTC-07:00)</option><option value="Mexico City / Guatemala / Costa Rica (UTC-06:00)">Mexico City / Guatemala / Costa Rica (UTC-06:00)</option><option value="Colombia / Peru / Ecuador / Panama (UTC-05:00)">Colombia / Peru / Ecuador / Panama (UTC-05:00)</option><option value="Venezuela / Bolivia / Dominican Republic (UTC-04:00)">Venezuela / Bolivia / Dominican Republic (UTC-04:00)</option><option value="Argentina / Brazil - São Paulo / Chile (UTC-03:00)">Argentina / Brazil - São Paulo / Chile (UTC-03:00)</option><option value="South Georgia / Mid-Atlantic (UTC-02:00)">South Georgia / Mid-Atlantic (UTC-02:00)</option><option value="Azores / Cape Verde (UTC-01:00)">Azores / Cape Verde (UTC-01:00)</option><option value="Ghana / Iceland / Portugal (UTC+00:00)">Ghana / Iceland / Portugal (UTC+00:00)</option><option value="France / Germany / Spain / Italy / Nigeria (UTC+01:00)">France / Germany / Spain / Italy / Nigeria (UTC+01:00)</option><option value="South Africa / Egypt / Greece / Turkey (UTC+02:00)">South Africa / Egypt / Greece / Turkey (UTC+02:00)</option><option value="Saudi Arabia / Kenya / Qatar (UTC+03:00)">Saudi Arabia / Kenya / Qatar (UTC+03:00)</option><option value="Iran (UTC+03:30)">Iran (UTC+03:30)</option><option value="United Arab Emirates / Oman / Georgia (UTC+04:00)">United Arab Emirates / Oman / Georgia (UTC+04:00)</option><option value="Afghanistan (UTC+04:30)">Afghanistan (UTC+04:30)</option><option value="Pakistan / Maldives (UTC+05:00)">Pakistan / Maldives (UTC+05:00)</option><option value="India / Sri Lanka (UTC+05:30)">India / Sri Lanka (UTC+05:30)</option><option value="Nepal (UTC+05:45)">Nepal (UTC+05:45)</option><option value="Bangladesh / Bhutan (UTC+06:00)">Bangladesh / Bhutan (UTC+06:00)</option><option value="Myanmar (UTC+06:30)">Myanmar (UTC+06:30)</option><option value="Thailand / Vietnam / Indonesia - Jakarta (UTC+07:00)">Thailand / Vietnam / Indonesia - Jakarta (UTC+07:00)</option><option value="Malaysia / Philippines / Indonesia - Bali (UTC+08:00)">Malaysia / Philippines / Indonesia - Bali (UTC+08:00)</option><option value="Australia - Adelaide / Darwin (UTC+09:30)">Australia - Adelaide / Darwin (UTC+09:30)</option><option value="Guam / Papua New Guinea (UTC+10:00)">Guam / Papua New Guinea (UTC+10:00)</option><option value="Solomon Islands / New Caledonia (UTC+11:00)">Solomon Islands / New Caledonia (UTC+11:00)</option><option value="New Zealand / Fiji (UTC+12:00)">New Zealand / Fiji (UTC+12:00)</option><option value="Tonga / Samoa (UTC+13:00)">Tonga / Samoa (UTC+13:00)</option><option value="Kiribati - Line Islands (UTC+14:00)">Kiribati - Line Islands (UTC+14:00)</option></optgroup></select></label>
+</div>
+<div class="block space-y-3" id="trial-preferred-times-block"><span class="block text-sm font-semibold text-on-surface">Preferred Trial Times</span><div class="space-y-4 rounded-xl bg-surface-container-low border border-outline-variant/30 p-4"><div><p class="text-xs font-semibold text-on-surface-variant uppercase tracking-wider mb-2">Days</p><div class="flex flex-wrap gap-2" id="trial-day-options"><button class="trial-day-circle rounded-full border border-outline-variant w-9 h-9 font-semibold text-sm hover:border-primary transition-colors" data-day="Monday" type="button">M</button><button class="trial-day-circle rounded-full border border-outline-variant w-9 h-9 font-semibold text-sm hover:border-primary transition-colors" data-day="Tuesday" type="button">T</button><button class="trial-day-circle rounded-full border border-outline-variant w-9 h-9 font-semibold text-sm hover:border-primary transition-colors" data-day="Wednesday" type="button">W</button><button class="trial-day-circle rounded-full border border-outline-variant w-9 h-9 font-semibold text-sm hover:border-primary transition-colors" data-day="Thursday" type="button">T</button><button class="trial-day-circle rounded-full border border-outline-variant w-9 h-9 font-semibold text-sm hover:border-primary transition-colors" data-day="Friday" type="button">F</button><button class="trial-day-circle rounded-full border border-outline-variant w-9 h-9 font-semibold text-sm hover:border-primary transition-colors" data-day="Saturday" type="button">S</button><button class="trial-day-circle rounded-full border border-outline-variant w-9 h-9 font-semibold text-sm hover:border-primary transition-colors" data-day="Sunday" type="button">S</button></div></div><div><p class="text-xs font-semibold text-on-surface-variant uppercase tracking-wider mb-2">Times</p><div class="grid grid-cols-1 sm:grid-cols-3 gap-2" id="trial-time-options"><label class="border border-outline-variant rounded-xl p-3 flex items-center justify-between gap-2 bg-white/50 hover:border-primary transition-colors"><span class="font-semibold text-sm">08:00-12:00</span><input class="trial-time-range rounded text-primary" name="trial_time_range" type="checkbox" value="08:00-12:00"/></label><label class="border border-outline-variant rounded-xl p-3 flex items-center justify-between gap-2 bg-white/50 hover:border-primary transition-colors"><span class="font-semibold text-sm">12:00-17:00</span><input class="trial-time-range rounded text-primary" name="trial_time_range" type="checkbox" value="12:00-17:00"/></label><label class="border border-outline-variant rounded-xl p-3 flex items-center justify-between gap-2 bg-white/50 hover:border-primary transition-colors"><span class="font-semibold text-sm">17:00-21:00</span><input class="trial-time-range rounded text-primary" name="trial_time_range" type="checkbox" value="17:00-21:00"/></label></div></div><input id="trial-availability" name="preferred_times" type="hidden" value=""/></div></div>
+<button class="w-full bg-secondary text-white py-4 rounded-full font-bold text-lg hover:opacity-90 transition-all active:scale-[0.98]" type="submit">Request Trial Lesson</button>
+</form>
+<div class="hidden text-center py-8" id="trial-form-success">
+<span class="material-symbols-outlined text-6xl text-primary mb-4">check_circle</span>
+<h4 class="font-headline-md text-on-surface mb-2">Trial Request Ready</h4>
+<p class="text-on-surface-variant text-sm">Thank you. We received your trial lesson request and will contact you to arrange a time.</p>
+</div>
+</div>
+</div>
+</div>
+<main class="pb-stack-lg">
+<!-- Hero Section -->
+<section class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-stack-lg text-center" id="program-info">
+<div class="inline-block px-4 py-1.5 rounded-full bg-tertiary-container text-on-tertiary-container font-label-sm text-label-sm mb-stack-sm">
+            Cohort Admissions Open
+        </div>
+<h1 class="font-display-lg text-display-lg md:text-[56px] text-primary mb-stack-sm max-w-3xl mx-auto">
+            Our Learning Circles
+        </h1>
+<div class="flex flex-wrap justify-center items-center gap-4 md:gap-8 mb-stack-md bg-surface-container-low p-4 md:p-6 rounded-2xl border border-outline-variant/20 max-w-fit mx-auto"><button class="bg-surface-container-highest hover:bg-primary/10 text-primary font-bold px-6 py-3 rounded-xl transition-all flex items-center gap-3 group border border-outline-variant/30 shadow-sm active:scale-[0.98] hover:shadow-md open-cohort-modal-trigger"><span class="material-symbols-outlined text-2xl bg-primary/10 p-2 rounded-full group-hover:bg-primary/20">groups</span><div class="text-left"><span class="block text-lg leading-tight">Interested in a cohort?</span><span class="text-xs font-medium text-on-surface-variant">Join our next group session</span></div></button><div class="hidden md:block w-px h-12 bg-outline-variant/30"></div><a class="bg-surface-container-highest hover:bg-secondary/10 text-on-surface-variant hover:text-secondary font-bold px-6 py-3 rounded-xl transition-all flex items-center gap-3 group border border-outline-variant/30 shadow-sm active:scale-[0.98] hover:shadow-md" href="#coaching-section"><span class="material-symbols-outlined text-2xl bg-on-surface-variant/10 p-2 rounded-full group-hover:bg-secondary/10">person</span><div class="text-left"><span class="block text-lg leading-tight">Looking for 1-1 coaching?</span><span class="text-xs font-medium text-on-surface-variant">Personalized learning roadmap</span></div></a></div>
+</section><section class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop mb-stack-lg">
+<div class="bg-surface-container-low border border-outline-variant/20 rounded-[2rem] p-6 md:p-8">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="flex items-center gap-4 justify-center md:justify-start">
+<div class="bg-primary/10 p-3 rounded-full">
+<span class="material-symbols-outlined text-primary text-2xl">schedule</span>
+</div>
+<div>
+<p class="font-label-md text-on-surface uppercase tracking-wider text-xs mb-0.5">Class Duration</p>
+<p class="font-headline-md text-headline-md text-primary">60-minute classes</p>
+</div>
+</div>
+<div class="flex items-center gap-4 justify-center md:justify-start border-y md:border-y-0 md:border-x border-outline-variant/20 py-6 md:py-0 md:px-8">
+<div class="bg-primary/10 p-3 rounded-full">
+<span class="material-symbols-outlined text-primary text-2xl">calendar_month</span>
+</div>
+<div>
+<p class="font-label-md text-on-surface uppercase tracking-wider text-xs mb-0.5">Frequency</p>
+<p class="font-headline-md text-headline-md text-primary">Twice per week</p>
+</div>
+</div>
+<div class="flex items-center gap-4 justify-center md:justify-start">
+<div class="bg-primary/10 p-3 rounded-full">
+<span class="material-symbols-outlined text-primary text-2xl">groups</span>
+</div>
+<div>
+<p class="font-label-md text-on-surface uppercase tracking-wider text-xs mb-0.5">Class Size</p>
+<p class="font-headline-md text-headline-md text-primary">Small groups (4–8)</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Programs Container -->
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop space-y-stack-lg">
+<!-- Mandarin Track -->
+<section class="space-y-stack-md scroll-mt-24" id="mandarin">
+<div class="flex items-center space-x-4 border-b border-outline-variant/30 pb-4">
+<span class="material-symbols-outlined text-primary text-4xl">language_chinese_dayi</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Mandarin Track</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<!-- Mandarin Level 1 -->
+<div class="bg-surface-container-lowest rounded-[1.5rem] p-8 flex flex-col h-full border border-outline-variant/20">
+<div class="mb-6">
+<span class="bg-tertiary-fixed text-on-tertiary-fixed px-3 py-1 rounded-full text-label-sm font-label-sm mb-3 inline-block">Level 1 • 5 Weeks</span>
+<h3 class="font-headline-md text-headline-md text-primary">Beginner Mandarin Circle</h3>
+<p class="text-on-surface-variant font-body-md mt-1 italic"><span class="font-bold not-italic">Ideal for:</span> Perfect for those starting from zero.</p>
+</div>
+<div class="mb-6 space-y-6"><div class="flex items-center justify-between"><div><p class="text-xs text-on-surface-variant line-through">$732 USD</p><p class="text-primary font-bold text-2xl">$549 USD</p><p class="text-xs font-bold text-secondary">25% off Launch Offer</p></div><a class="bg-primary text-white px-6 py-2 rounded-full font-label-md text-sm hover:opacity-90 transition-all open-enrollment-modal-trigger" href="#contact-modal">Enroll</a></div><div><p class="text-label-sm font-label-sm text-on-surface mb-3 uppercase tracking-wide">Outcomes &amp; Focus</p><ul class="space-y-3"><li class="flex items-start space-x-3"><span class="material-symbols-outlined text-secondary text-xl" style="font-variation-settings: 'FILL' 1;">check_circle</span><span class="font-body-md text-on-surface">Master Pinyin &amp; 4 Tones</span></li><li class="flex items-start space-x-3"><span class="material-symbols-outlined text-secondary text-xl" style="font-variation-settings: 'FILL' 1;">check_circle</span><span class="font-body-md text-on-surface">Basic self-introductions</span></li><li class="flex items-start space-x-3"><span class="material-symbols-outlined text-secondary text-xl" style="font-variation-settings: 'FILL' 1;">check_circle</span><span class="font-body-md text-on-surface">Handle daily situations with confidence</span></li></ul></div></div>
+<div class="pt-6 border-t border-outline-variant/30 mt-auto">
+<div class="bg-surface-container-low p-4 rounded-xl mb-6">
+<p class="text-[10px] uppercase font-bold text-primary tracking-widest mb-1">Signature Activity</p>
+<p class="text-xs text-on-surface italic">"First Mandarin Conversation" - Practice greetings, self-introductions, and simple everyday phrases in a friendly beginner role-play.</p>
+</div>
+</div>
+</div>
+<!-- Mandarin Level 2 -->
+<div class="bg-surface-container-lowest rounded-[1.5rem] p-8 flex flex-col h-full relative overflow-hidden border-2 border-primary/10">
+<div class="mb-6">
+<span class="bg-tertiary-fixed text-on-tertiary-fixed px-3 py-1 rounded-full text-label-sm font-label-sm mb-3 inline-block">Level 2 • 8 Weeks</span>
+<h3 class="font-headline-md text-headline-md text-primary">Intermediate Mandarin Circle</h3>
+<p class="text-on-surface-variant font-body-md mt-1 italic"><span class="font-bold not-italic">Ideal for:</span> For conversationalists ready for flow.</p>
+</div>
+<div class="mb-6 space-y-6"><div class="flex items-center justify-between"><div><p class="text-xs text-on-surface-variant line-through">$1,065 USD</p><p class="text-primary font-bold text-2xl">$799 USD</p><p class="text-xs font-bold text-secondary">25% off Launch Offer</p></div><a class="bg-primary text-white px-6 py-2 rounded-full font-label-md text-sm hover:opacity-90 transition-all open-enrollment-modal-trigger" href="#contact-modal">Enroll</a></div><div><p class="text-label-sm font-label-sm text-on-surface mb-3 uppercase tracking-wide">Outcomes &amp; Focus</p><ul class="space-y-3"><li class="flex items-start space-x-3"><span class="material-symbols-outlined text-secondary text-xl" style="font-variation-settings: 'FILL' 1;">check_circle</span><span class="font-body-md text-on-surface">Storytelling &amp; Flow Mastery</span></li><li class="flex items-start space-x-3"><span class="material-symbols-outlined text-secondary text-xl" style="font-variation-settings: 'FILL' 1;">check_circle</span><span class="font-body-md text-on-surface">Cultural Nuance Workshops</span></li><li class="flex items-start space-x-3"><span class="material-symbols-outlined text-secondary text-xl" style="font-variation-settings: 'FILL' 1;">check_circle</span><span class="font-body-md text-on-surface">Natural sentence building &amp; slang</span></li></ul></div></div>
+<div class="pt-6 border-t border-outline-variant/30 mt-auto">
+<div class="bg-primary/5 rounded-xl p-4 mb-6">
+<p class="text-label-sm font-label-sm text-primary mb-1 uppercase tracking-widest">Signature Activity</p>
+<p class="text-xs text-on-surface italic">"Topic Deep Dives" - Students lead a 15-minute discussion entirely in Mandarin.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Cantonese Track -->
+<section class="space-y-stack-md pt-8 scroll-mt-24" id="cantonese">
+<div class="flex items-center space-x-4 border-b border-outline-variant/30 pb-4">
+<span class="material-symbols-outlined text-primary text-4xl">translate</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Cantonese Track</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<!-- Cantonese Level 1 -->
+<div class="bg-surface-container-lowest rounded-[1.5rem] p-8 flex flex-col h-full border border-outline-variant/20">
+<div class="mb-6">
+<span class="bg-tertiary-fixed text-on-tertiary-fixed px-3 py-1 rounded-full text-label-sm font-label-sm mb-3 inline-block">Level 1 • 5 Weeks</span>
+<h3 class="font-headline-md text-headline-md text-primary">Beginner Cantonese Circle</h3>
+<p class="text-on-surface-variant font-body-md mt-1 italic"><span class="font-bold not-italic">Ideal for:</span> For learners starting from zero.</p>
+</div>
+<div class="mb-6 space-y-6">
+<div class="flex items-center justify-between"><div><p class="text-xs text-on-surface-variant line-through">$732 USD</p><p class="text-primary font-bold text-2xl">$549 USD</p><p class="text-xs font-bold text-secondary">25% off Launch Offer</p></div><a class="bg-primary text-white px-6 py-2 rounded-full font-label-md text-sm hover:opacity-90 transition-all open-enrollment-modal-trigger" href="#contact-modal">Enroll</a></div>
+<div>
+<p class="text-label-sm font-label-sm text-on-surface mb-3 uppercase tracking-wide">Outcomes &amp; Focus</p>
+<ul class="space-y-3">
+<li class="flex items-start space-x-3"><span class="material-symbols-outlined text-secondary text-xl" style="font-variation-settings: 'FILL' 1;">check_circle</span><span class="font-body-md text-on-surface">Introduce themselves and use common daily expressions</span></li>
+<li class="flex items-start space-x-3"><span class="material-symbols-outlined text-secondary text-xl" style="font-variation-settings: 'FILL' 1;">check_circle</span><span class="font-body-md text-on-surface">Understand basic spoken Cantonese</span></li>
+<li class="flex items-start space-x-3"><span class="material-symbols-outlined text-secondary text-xl" style="font-variation-settings: 'FILL' 1;">check_circle</span><span class="font-body-md text-on-surface">Build pronunciation, speaking confidence, and listening skills</span></li>
+</ul>
+</div>
+</div>
+<div class="pt-6 border-t border-outline-variant/30 mt-auto">
+<div class="bg-surface-container-low p-4 rounded-xl mb-6">
+<p class="text-[10px] uppercase font-bold text-primary tracking-widest mb-1">Cultural Element</p>
+<p class="text-xs text-on-surface italic">Hong Kong daily life and culture.</p>
+</div>
+</div>
+</div>
+<!-- Cantonese Level 2 -->
+<div class="bg-surface-container-lowest rounded-[1.5rem] p-8 flex flex-col h-full border border-outline-variant/20">
+<div class="mb-6">
+<span class="bg-tertiary-fixed text-on-tertiary-fixed px-3 py-1 rounded-full text-label-sm font-label-sm mb-3 inline-block">Level 2 • 8 Weeks</span>
+<h3 class="font-headline-md text-headline-md text-primary">Intermediate Cantonese Circle</h3>
+<p class="text-on-surface-variant font-body-md mt-1 italic"><span class="font-bold not-italic">Ideal for:</span> For speakers ready for natural flow.</p>
+</div>
+<div class="mb-6 space-y-6">
+<div class="flex items-center justify-between"><div><p class="text-xs text-on-surface-variant line-through">$1,065 USD</p><p class="text-primary font-bold text-2xl">$799 USD</p><p class="text-xs font-bold text-secondary">25% off Launch Offer</p></div><a class="bg-primary text-white px-6 py-2 rounded-full font-label-md text-sm hover:opacity-90 transition-all open-enrollment-modal-trigger" href="#contact-modal">Enroll</a></div>
+<div>
+<p class="text-label-sm font-label-sm text-on-surface mb-3 uppercase tracking-wide">Outcomes &amp; Focus</p>
+<ul class="space-y-3">
+<li class="flex items-start space-x-3"><span class="material-symbols-outlined text-secondary text-xl" style="font-variation-settings: 'FILL' 1;">check_circle</span><span class="font-body-md text-on-surface">Tell stories, express opinions, and participate in discussions</span></li>
+<li class="flex items-start space-x-3"><span class="material-symbols-outlined text-secondary text-xl" style="font-variation-settings: 'FILL' 1;">check_circle</span><span class="font-body-md text-on-surface">Understand more authentic Cantonese speech</span></li>
+<li class="flex items-start space-x-3"><span class="material-symbols-outlined text-secondary text-xl" style="font-variation-settings: 'FILL' 1;">check_circle</span><span class="font-body-md text-on-surface">Build conversation fluency through natural, real-world Cantonese</span></li>
+</ul>
+</div>
+</div>
+<div class="pt-6 border-t border-outline-variant/30 mt-auto">
+<div class="bg-primary/5 rounded-xl p-4 mb-6">
+<p class="text-label-sm font-label-sm text-primary mb-1 uppercase tracking-widest">Signature Activity</p>
+<p class="text-xs text-on-surface italic">Cantonese discussion groups based on authentic topics.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- English Track -->
+<section class="space-y-stack-md pt-8 scroll-mt-24" id="english">
+<div class="flex items-center space-x-4 border-b border-outline-variant/30 pb-4">
+<span class="material-symbols-outlined text-primary text-4xl">chat_bubble</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">English Track</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<!-- English Level 1 -->
+<div class="bg-surface-container-lowest rounded-[1.5rem] p-8 flex flex-col h-full border border-outline-variant/20">
+<div class="mb-6">
+<span class="bg-tertiary-fixed text-on-tertiary-fixed px-3 py-1 rounded-full text-label-sm font-label-sm mb-3 inline-block">Level 1 • 5 Weeks</span>
+<h3 class="font-headline-md text-headline-md text-primary">English Confidence Circle</h3>
+<p class="text-on-surface-variant font-body-md mt-1 italic"><span class="font-bold not-italic">Ideal for:</span> Speak without 'freezing'.</p>
+</div>
+<div class="mb-6 space-y-6"><div class="flex items-center justify-between"><div><p class="text-xs text-on-surface-variant line-through">$732 USD</p><p class="text-primary font-bold text-2xl">$549 USD</p><p class="text-xs font-bold text-secondary">25% off Launch Offer</p></div><a class="bg-primary text-white px-6 py-2 rounded-full font-label-md text-sm hover:opacity-90 transition-all open-enrollment-modal-trigger" href="#contact-modal">Enroll</a></div><div><p class="text-label-sm font-label-sm text-on-surface mb-3 uppercase tracking-wide">Outcomes &amp; Focus</p><ul class="space-y-3"><li class="flex items-start space-x-3"><span class="material-symbols-outlined text-secondary text-xl" style="font-variation-settings: 'FILL' 1;">check_circle</span><span class="font-body-md text-on-surface">Fear-Free Speaking Practice</span></li><li class="flex items-start space-x-3"><span class="material-symbols-outlined text-secondary text-xl" style="font-variation-settings: 'FILL' 1;">check_circle</span><span class="font-body-md text-on-surface">Small-Talk Mastery</span></li><li class="flex items-start space-x-3"><span class="material-symbols-outlined text-secondary text-xl" style="font-variation-settings: 'FILL' 1;">check_circle</span><span class="font-body-md text-on-surface">Active listening techniques</span></li></ul></div></div>
+<div class="pt-6 border-t border-outline-variant/30 mt-auto">
+<div class="bg-surface-container-low p-4 rounded-xl mb-6">
+<p class="text-[10px] uppercase font-bold text-primary tracking-widest mb-1">Signature Activity</p>
+<p class="text-xs text-on-surface italic">"The Safe Harbor" - Guided group improve to reduce speaking anxiety.</p>
+</div>
+</div>
+</div>
+<!-- English Level 2 -->
+<div class="bg-surface-container-lowest rounded-[1.5rem] p-8 flex flex-col h-full border border-outline-variant/20">
+<div class="mb-6">
+<span class="bg-tertiary-fixed text-on-tertiary-fixed px-3 py-1 rounded-full text-label-sm font-label-sm mb-3 inline-block">Level 2 • 8 Weeks</span>
+<h3 class="font-headline-md text-headline-md text-primary">English Communication Circle</h3>
+<p class="text-on-surface-variant font-body-md mt-1 italic"><span class="font-bold not-italic">Ideal for:</span> Professional mastery &amp; career growth.</p>
+</div>
+<div class="mb-6 space-y-6"><div class="flex items-center justify-between"><div><p class="text-xs text-on-surface-variant line-through">$1,065 USD</p><p class="text-primary font-bold text-2xl">$799 USD</p><p class="text-xs font-bold text-secondary">25% off Launch Offer</p></div><a class="bg-primary text-white px-6 py-2 rounded-full font-label-md text-sm hover:opacity-90 transition-all open-enrollment-modal-trigger" href="#contact-modal">Enroll</a></div><div><p class="text-label-sm font-label-sm text-on-surface mb-3 uppercase tracking-wide">Outcomes &amp; Focus</p><ul class="space-y-3"><li class="flex items-start space-x-3"><span class="material-symbols-outlined text-secondary text-xl" style="font-variation-settings: 'FILL' 1;">check_circle</span><span class="font-body-md text-on-surface">Leadership Communication</span></li><li class="flex items-start space-x-3"><span class="material-symbols-outlined text-secondary text-xl" style="font-variation-settings: 'FILL' 1;">check_circle</span><span class="font-body-md text-on-surface">Cross-Cultural Nuance</span></li><li class="flex items-start space-x-3"><span class="material-symbols-outlined text-secondary text-xl" style="font-variation-settings: 'FILL' 1;">check_circle</span><span class="font-body-md text-on-surface">Persuasive presentation skills</span></li></ul></div></div>
+<div class="pt-6 border-t border-outline-variant/30 mt-auto">
+<div class="bg-primary/5 rounded-xl p-4 mb-6">
+<p class="text-label-sm font-label-sm text-primary mb-1 uppercase tracking-widest">Signature Activity</p>
+<p class="text-xs text-on-surface italic">"The Global Boardroom" - Simulated cross-cultural business negotiation.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Weekly Conversation Clubs Unified Section -->
+<section class="space-y-stack-md pt-16 scroll-mt-24" id="coaching">
+<div class="flex items-center space-x-4 border-b border-outline-variant/30 pb-4">
+<span class="material-symbols-outlined text-primary text-4xl">sync</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Weekly Conversation Clubs</h2>
+</div>
+<p class="text-on-surface-variant font-body-md mb-stack-md">Drop-in sessions to keep your skills sharp and connect with the community. Open to all post-cohort learners.</p><div class="flex flex-wrap gap-6 mb-stack-md bg-surface-container-low p-4 rounded-xl border border-outline-variant/20 w-fit">
+<div class="flex items-center gap-2 text-primary font-medium">
+<span class="material-symbols-outlined text-xl">payments</span>
+<span class="text-body-md">$49 USD per session (60 mins)</span>
+</div>
+<div class="flex items-center gap-2 text-primary font-medium">
+<span class="material-symbols-outlined text-xl">diversity_3</span>
+<span class="text-body-md">Small group format (4–8 learners)</span>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Mandarin Club -->
+<div class="bg-primary/5 rounded-[1.5rem] p-8 flex flex-col h-full border border-primary/20">
+<div class="mb-6">
+<span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-label-sm font-label-sm mb-3 inline-block">Ongoing • Mandarin</span>
+<h3 class="font-headline-md text-headline-md text-primary">Mandarin Club</h3>
+<p class="text-on-surface-variant font-body-md mt-1">Maintenance for fluent learners.</p>
+</div>
+<div class="mb-8 flex-grow">
+<ul class="space-y-4">
+<li class="flex items-start space-x-3">
+<span class="material-symbols-outlined text-secondary text-xl" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-body-md text-on-surface">Guided casual dialogue</span>
+</li>
+<li class="flex items-start space-x-3">
+<span class="material-symbols-outlined text-secondary text-xl" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-body-md text-on-surface">Peer network &amp; friendships</span>
+</li>
+</ul>
+</div>
+</div>
+<!-- Cantonese Club -->
+<div class="bg-primary/5 rounded-[1.5rem] p-8 flex flex-col h-full border border-primary/20">
+<div class="mb-6">
+<span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-label-sm font-label-sm mb-3 inline-block">Ongoing • Cantonese</span>
+<h3 class="font-headline-md text-headline-md text-primary">Cantonese Club</h3>
+<p class="text-on-surface-variant font-body-md mt-1">Daily immersion for speakers.</p>
+</div>
+<div class="mb-8 flex-grow">
+<ul class="space-y-4">
+<li class="flex items-start space-x-3">
+<span class="material-symbols-outlined text-secondary text-xl" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-body-md text-on-surface">Native-led conversation</span>
+</li>
+<li class="flex items-start space-x-3">
+<span class="material-symbols-outlined text-secondary text-xl" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-body-md text-on-surface">Cultural exchange drills</span>
+</li>
+</ul>
+</div>
+</div>
+<!-- English Club -->
+<div class="bg-primary/5 rounded-[1.5rem] p-8 flex flex-col h-full border border-primary/20">
+<div class="mb-6">
+<span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-label-sm font-label-sm mb-3 inline-block">Ongoing • English</span>
+<h3 class="font-headline-md text-headline-md text-primary">English Club</h3>
+<p class="text-on-surface-variant font-body-md mt-1">Sharpen communication skills.</p>
+</div>
+<div class="mb-8 flex-grow">
+<ul class="space-y-4">
+<li class="flex items-start space-x-3">
+<span class="material-symbols-outlined text-secondary text-xl" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-body-md text-on-surface">Interactive group sessions</span>
+</li>
+<li class="flex items-start space-x-3">
+<span class="material-symbols-outlined text-secondary text-xl" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-body-md text-on-surface">Focus on current events</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<!-- Private Coaching Section -->
+<section class="pt-16 scroll-mt-24" id="coaching-section">
+<div class="bg-surface-container rounded-[2rem] p-margin-mobile md:p-12 border border-outline-variant/30" id="private-coaching-section">
+<div class="max-w-3xl mx-auto text-center space-y-6">
+<h2 class="font-headline-lg text-headline-lg text-primary">Private 1-on-1 Coaching</h2>
+<p class="text-body-lg text-on-surface-variant">For learners with specific deadlines or highly personalized goals. Our coaches work with you to build a custom roadmap for Mandarin, Cantonese, or English.</p>
+<div class="flex flex-wrap justify-center gap-8">
+<div class="flex items-center gap-2 text-on-surface font-medium">
+<span class="material-symbols-outlined text-primary">schedule</span>
+<span class="">Flexible Scheduling</span>
+</div>
+<div class="flex items-center gap-2 text-on-surface font-medium">
+<span class="material-symbols-outlined text-primary">target</span>
+<span class="">Targeted Support</span>
+</div>
+</div>
+<div class="pt-4">
+<button class="inline-block bg-primary text-white px-8 py-4 rounded-full font-label-md shadow-lg hover:opacity-90 transition-all open-connect-modal-trigger" id="btn-book-consultation">Book Consultation</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Bottom CTA Section -->
+<section class="bg-primary text-white rounded-[2.5rem] p-margin-mobile md:p-margin-desktop overflow-hidden relative">
+<div class="z-10 relative max-w-2xl text-center mx-auto">
+<h2 class="font-display-lg text-display-lg mb-4">Ready to find your circle?</h2>
+<p class="font-body-lg text-on-primary-container mb-8">Join the next cohort and start speaking with confidence in just 5 weeks.</p>
+<div class="flex flex-col sm:flex-row gap-4 justify-center">
+<a class="bg-secondary text-white px-10 py-4 rounded-full font-label-md shadow-xl hover:opacity-90 transition-all" href="#program-info">Yes</a>
+<button class="bg-white/10 border border-white/20 backdrop-blur text-white px-10 py-4 rounded-full font-label-md hover:bg-white/20 transition-all open-connect-modal-trigger" id="btn-have-questions">Yes, but I have questions</button>
+</div>
+</div>
+<!-- Decorative blurs -->
+<div class="absolute -right-20 -bottom-20 w-80 h-80 bg-secondary/30 rounded-full blur-[100px]"></div>
+<div class="absolute -left-20 -top-20 w-80 h-80 bg-tertiary-fixed/20 rounded-full blur-[100px]"></div>
+</section>
+</div>
+</main>
+<footer class="w-full bg-surface-container-low border-t border-outline-variant/30 mt-stack-lg">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-stack-lg">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter mb-12">
+<div>
+<h3 class="text-headline-md font-headline-md text-primary mb-6">MyLinguaCircle</h3>
+<p class="text-on-surface-variant font-body-md text-sm mb-6">Connecting language learners through community-first cohort programs.</p>
+<a aria-label="Email MyLinguaCircle" class="text-primary hover:text-secondary transition-colors inline-flex items-center gap-2" data-contact-topic="Contact / Questions" href="#contact-modal"><span class="material-symbols-outlined text-sm">mail</span> support@mylinguacircle.com</a>
+</div>
+<div>
+<h4 class="font-label-md text-on-surface mb-6 uppercase tracking-wider text-xs">Languages</h4>
+<ul class="space-y-3 font-body-md text-sm">
+<li><a class="text-on-surface-variant hover:text-primary transition-colors" href="programs.html#mandarin">Mandarin</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors" href="programs.html#cantonese">Cantonese</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors" href="programs.html#english">English</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-md text-on-surface mb-6 uppercase tracking-wider text-xs">Company</h4>
+<ul class="space-y-3 font-body-md text-sm">
+<li><a class="text-on-surface-variant hover:text-primary transition-colors" href="about.html">About</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors open-connect-modal-trigger" href="#lets-connect-modal">Contact</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-md text-on-surface mb-6 uppercase tracking-wider text-xs">Support</h4>
+<ul class="space-y-3 font-body-md text-sm">
+<li><a class="text-on-surface-variant hover:text-primary transition-colors" href="index.html#faq">FAQ</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors" data-contact-topic="Privacy Policy Question" href="#contact-modal">Privacy Policy</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors" data-contact-topic="Terms of Service Question" href="#contact-modal">Terms of Service</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors" data-contact-topic="Cookie Policy Question" href="#contact-modal">Cookies</a></li>
+</ul>
+</div>
+</div>
+<div class="pt-8 border-t border-outline-variant/30 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="text-[12px] text-on-surface-variant">© 2024 MyLinguaCircle. All rights reserved.</p>
+</div>
+</div>
+</footer>
+<script>
+    // Header shadow on scroll
+    window.addEventListener('scroll', () => {
+        const header = document.querySelector('header');
+        if (window.scrollY > 10) {
+            header.classList.add('shadow-sm');
+        } else {
+            header.classList.remove('shadow-sm');
+        }
+    });
+
+    // Smooth scroll for anchors
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+
+    // Enrollment application modal
+    const modal = document.getElementById('contact-modal');
+    const triggers = document.querySelectorAll('.open-enrollment-modal-trigger');
+    const closeBtn = document.getElementById('close-modal');
+    const form = document.getElementById('enrollment-form');
+    const successMsg = document.getElementById('form-success');
+    const selectedProgram = document.getElementById('selected-program');
+
+    const openEnrollmentModal = (programName) => {
+        if (programName) {
+            const matchingCard = [...document.querySelectorAll('#enrollment-form .selection-card')].find(card => card.dataset.program && card.dataset.program.includes(programName));
+            if (matchingCard) {
+                matchingCard.click();
+            }
+        } else {
+            showAllEnrollmentPrograms();
+        }
+        modal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+        form.classList.remove('hidden');
+        successMsg.classList.add('hidden');
+    };
+
+    triggers.forEach(btn => {
+        btn.addEventListener('click', (event) => {
+            event.preventDefault();
+            const card = btn.closest('.bg-surface-container-lowest');
+            const programName = card ? card.querySelector('h3')?.textContent?.trim() : '';
+            openEnrollmentModal(programName);
+        });
+    });
+
+    closeBtn.addEventListener('click', () => {
+        modal.classList.add('hidden');
+        document.body.style.overflow = '';
+    });
+
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modal.classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+    });
+
+    const enrollmentProgramCards = () => [...document.querySelectorAll('#enrollment-form .selection-card')];
+
+    const showAllEnrollmentPrograms = () => {
+        enrollmentProgramCards().forEach(item => item.classList.remove('hidden'));
+        const changeWrapper = document.getElementById('change-enrollment-program-wrapper');
+        if (changeWrapper) changeWrapper.classList.add('hidden');
+    };
+
+    const compactEnrollmentPrograms = (selectedCard) => {
+        if (!selectedCard) return;
+        enrollmentProgramCards().forEach(item => {
+            if (item === selectedCard) {
+                item.classList.remove('hidden');
+            } else {
+                item.classList.add('hidden');
+            }
+        });
+        const changeWrapper = document.getElementById('change-enrollment-program-wrapper');
+        if (changeWrapper) changeWrapper.classList.remove('hidden');
+    };
+
+    const changeProgramBtn = document.getElementById('change-enrollment-program');
+    if (changeProgramBtn) {
+        changeProgramBtn.addEventListener('click', showAllEnrollmentPrograms);
+    }
+
+    document.querySelectorAll('#enrollment-form .selection-card').forEach(card => {
+        card.addEventListener('click', () => {
+            document.querySelectorAll('#enrollment-form .selection-card').forEach(item => item.classList.remove('border-primary', 'bg-primary/5'));
+            card.classList.add('border-primary', 'bg-primary/5');
+            selectedProgram.value = card.dataset.program || '';
+            compactEnrollmentPrograms(card);
+        });
+    });
+
+    document.querySelectorAll('.day-circle').forEach(day => {
+        day.addEventListener('click', () => {
+            day.classList.toggle('bg-primary');
+            day.classList.toggle('text-white');
+            day.classList.toggle('border-primary');
+        });
+    });
+
+    const checkedValues = selector => [...document.querySelectorAll(selector + ':checked')].map(input => input.value).join(', ') || 'Not specified';
+    const activeDays = () => [...document.querySelectorAll('.day-circle.bg-primary')].map(day => day.dataset.day).join(', ') || 'Not specified';
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const applicationData = {
+          selectedProgram: selectedProgram.value,
+          fullName: document.getElementById('applicant-name').value,
+          email: document.getElementById('applicant-email').value,
+          country: document.getElementById('applicant-country').value || 'Not specified',
+          timeZone: document.getElementById('applicant-timezone').value,
+          currentAbility: document.getElementById('applicant-level').value,
+          ageRange: document.getElementById('applicant-age').value,
+          motivations: checkedValues('.motivation'),
+          prioritySkills: checkedValues('.priority'),
+          preferredDays: activeDays(),
+          timeRange: checkedValues('.time-range'),
+          successLooksLike: document.getElementById('applicant-success').value || 'Not specified',
+          submittedAt: new Date().toISOString()
+        };
+        sessionStorage.setItem('mlcEnrollmentApplication', JSON.stringify(applicationData));
+        const paymentUrl = new URL('payment.html', window.location.href);
+        paymentUrl.searchParams.set('program', applicationData.selectedProgram);
+        paymentUrl.searchParams.set('name', applicationData.fullName);
+        paymentUrl.searchParams.set('email', applicationData.email);
+        window.location.href = paymentUrl.toString();
+    });
+</script>
+<script class="">
+(function() {
+  const connectModal = document.getElementById('lets-connect-modal');
+  const connectTriggers = document.querySelectorAll('.open-connect-modal-trigger');
+  const closeConnectBtn = document.getElementById('close-connect-modal');
+  const connectForm = document.getElementById('connect-form');
+
+  connectTriggers.forEach(btn => {
+    btn.addEventListener('click', (event) => {
+      event.preventDefault();
+      connectModal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+
+  closeConnectBtn.addEventListener('click', () => {
+    connectModal.classList.add('hidden');
+    document.body.style.overflow = '';
+  });
+
+  connectModal.addEventListener('click', (e) => {
+    if (e.target === connectModal) {
+      connectModal.classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+  });
+
+  connectForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const connectName = document.getElementById('connect-name').value;
+    const connectEmail = document.getElementById('connect-email').value;
+    const connectMessage = document.getElementById('connect-message').value;
+    const subject = encodeURIComponent('MyLinguaCircle consultation question');
+    const body = encodeURIComponent(`Name: ${connectName}
+Email: ${connectEmail}
+Message: ${connectMessage}`);
+    const btn = connectForm.querySelector('button[type="submit"]');
+    const original = btn.innerHTML;
+    btn.disabled = true;
+    btn.innerHTML = '<span class="material-symbols-outlined animate-spin">sync</span><span>Sending...</span>';
+
+    setTimeout(() => {
+      btn.innerHTML = 'Message Sent!';
+      setTimeout(() => {
+        connectModal.classList.add('hidden');
+        document.body.style.overflow = '';
+        btn.disabled = false;
+        btn.innerHTML = original;
+        connectForm.reset();
+      }, 1500);
+    }, 1000);
+  });
+})();
+</script>
+<script>
+(function() {
+  const cohortModal = document.getElementById('cohort-interest-modal');
+  const cohortTriggers = document.querySelectorAll('.open-cohort-modal-trigger');
+  const closeCohortBtn = document.getElementById('close-cohort-modal');
+  const cohortForm = document.getElementById('cohort-interest-form');
+  const cohortSuccess = document.getElementById('cohort-form-success');
+
+  if (!cohortModal || !cohortForm) return;
+
+  cohortTriggers.forEach(btn => {
+    btn.addEventListener('click', (event) => {
+      event.preventDefault();
+      cohortModal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+      cohortForm.classList.remove('hidden');
+      if (cohortSuccess) cohortSuccess.classList.add('hidden');
+    });
+  });
+
+  if (closeCohortBtn) {
+    closeCohortBtn.addEventListener('click', () => {
+      cohortModal.classList.add('hidden');
+      document.body.style.overflow = '';
+    });
+  }
+
+  cohortModal.addEventListener('click', (event) => {
+    if (event.target === cohortModal) {
+      cohortModal.classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+  });
+})();
+</script>
+<script>
+(function() {
+  const trialModal = document.getElementById('trial-lesson-modal');
+  const trialTriggers = document.querySelectorAll('.open-trial-modal-trigger');
+  const closeTrialBtn = document.getElementById('close-trial-modal');
+  const trialForm = document.getElementById('trial-lesson-form');
+  const trialSuccess = document.getElementById('trial-form-success');
+
+  if (!trialModal || !trialForm) return;
+
+  const openTrialModal = () => {
+    trialModal.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+    trialForm.classList.remove('hidden');
+    if (trialSuccess) trialSuccess.classList.add('hidden');
+  };
+
+  const closeTrialModal = () => {
+    trialModal.classList.add('hidden');
+    document.body.style.overflow = '';
+  };
+
+  trialTriggers.forEach(btn => btn.addEventListener('click', (event) => {
+    event.preventDefault();
+    openTrialModal();
+  }));
+
+  if (closeTrialBtn) closeTrialBtn.addEventListener('click', closeTrialModal);
+  trialModal.addEventListener('click', (event) => {
+    if (event.target === trialModal) closeTrialModal();
+  });
+
+  trialForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const subject = encodeURIComponent('MyLinguaCircle trial lesson request');
+    const body = encodeURIComponent(`Full Name: ${document.getElementById('trial-name').value}
+Email: ${document.getElementById('trial-email').value}
+Phone / WhatsApp / WeChat / Instagram: ${document.getElementById('trial-contact').value || 'Not specified'}
+Interested Language: ${document.getElementById('trial-language').value}
+Current Level: ${document.getElementById('trial-level').value}
+Time Zone: ${document.getElementById('trial-timezone').value || 'Not specified'}
+Preferred Trial Times: ${document.getElementById('trial-availability').value || 'Not specified'}`);
+
+    trialForm.classList.add('hidden');
+    if (trialSuccess) trialSuccess.classList.remove('hidden');
+    setTimeout(() => {
+      closeTrialModal();
+      setTimeout(() => {
+        trialForm.reset();
+        trialForm.classList.remove('hidden');
+        if (trialSuccess) trialSuccess.classList.add('hidden');
+      }, 300);
+    }, 2000);
+  });
+})();
+</script>
+<script data-version="MLC-FORMSPREE-ROUTER-v10">
+(function () {
+  const ENDPOINTS = {
+    enrollment: 'https://formspree.io/f/mykapgdk',
+    trial: 'https://formspree.io/f/mgobzeze',
+    contact: 'https://formspree.io/f/xzdqvbww',
+    interest: 'https://formspree.io/f/mojzlqbo'
+  };
+
+  const handledFormIds = new Set(['enrollment-form', 'trial-lesson-form', 'contact-form', 'connect-form', 'cohort-interest-form', 'payment-contact-form']);
+  const byId = id => document.getElementById(id);
+  const qsa = (sel, root = document) => Array.from(root.querySelectorAll(sel));
+  const valueById = id => (byId(id)?.value || '').trim();
+
+  function setFormActions() {
+    const config = {
+      'enrollment-form': ['enrollment', 'Enrollment Application'],
+      'trial-lesson-form': ['trial', 'Trial Lesson Request'],
+      'contact-form': ['contact', 'Contact / Questions'],
+      'connect-form': ['contact', 'Contact / Questions'],
+      'cohort-interest-form': ['interest', 'General Interest'],
+      'payment-contact-form': ['contact', 'Contact / Questions']
+    };
+    Object.entries(config).forEach(([id, [route, type]]) => {
+      const form = byId(id);
+      if (!form) return;
+      form.setAttribute('action', ENDPOINTS[route]);
+      form.setAttribute('method', 'POST');
+      form.dataset.formRoute = route;
+      form.dataset.formType = type;
+      let hidden = form.querySelector('input[name="form_type"]');
+      if (!hidden) {
+        hidden = document.createElement('input');
+        hidden.type = 'hidden';
+        hidden.name = 'form_type';
+        form.prepend(hidden);
+      }
+      hidden.value = type;
+    });
+  }
+
+  function openModal(modal) {
+    if (!modal) return;
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal(modal) {
+    if (!modal) return;
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+    document.body.style.overflow = '';
+  }
+
+  function resetTrialModal() {
+    const form = byId('trial-lesson-form');
+    const success = byId('trial-form-success') || byId('trial-lesson-success');
+    if (form) {
+      form.classList.remove('hidden');
+      form.dataset.formRoute = 'trial';
+      form.setAttribute('action', ENDPOINTS.trial);
+      form.setAttribute('method', 'POST');
+    }
+    if (success) success.classList.add('hidden');
+  }
+
+  function inferContactRoute(trigger) {
+    const text = (trigger?.textContent || '').trim().toLowerCase();
+    const purpose = (trigger?.dataset?.contactPurpose || trigger?.dataset?.contactTopic || '').toLowerCase();
+    if (trigger?.dataset?.interestCta === 'true') return 'interest';
+    if (/secure your spot|get started|join|cohort|interest|yes/.test(text + ' ' + purpose)) return 'interest';
+    return 'contact';
+  }
+
+  function configureContactModal(trigger) {
+    const modal = byId('contact-modal') || byId('mlc-generic-contact-modal') || byId('lets-connect-modal');
+    const form = byId('contact-form') || byId('connect-form');
+    if (!modal || !form) return false;
+    const route = form.id === 'connect-form' ? 'contact' : inferContactRoute(trigger);
+    form.dataset.formRoute = route;
+    form.dataset.formType = route === 'interest' ? 'General Interest' : 'Contact / Questions';
+    form.setAttribute('action', ENDPOINTS[route]);
+    form.setAttribute('method', 'POST');
+    const topic = trigger?.dataset?.contactTopic || trigger?.dataset?.contactPurpose || trigger?.textContent?.trim() || '';
+    if (topic) form.dataset.sourceCta = topic;
+    openModal(modal);
+    const success = byId('form-success');
+    if (success) success.classList.add('hidden');
+    form.classList.remove('hidden');
+    return true;
+  }
+
+  document.addEventListener('click', function (event) {
+    const trialTrigger = event.target.closest('.open-trial-modal-trigger, [data-open-trial-modal]');
+    if (trialTrigger) {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      resetTrialModal();
+      openModal(byId('trial-lesson-modal'));
+      return;
+    }
+
+    const trialClose = event.target.closest('.close-trial-modal, #close-trial-modal, [data-close-trial-modal]');
+    if (trialClose) {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      closeModal(byId('trial-lesson-modal'));
+      return;
+    }
+
+    const modalBackdrop = byId('trial-lesson-modal');
+    if (modalBackdrop && event.target === modalBackdrop) {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      closeModal(modalBackdrop);
+      return;
+    }
+
+    const contactTrigger = event.target.closest('a[href="#contact-modal"], .open-modal-trigger, .open-contact-modal-trigger, [data-contact-topic], [data-contact-purpose]');
+    if (contactTrigger) {
+      if (configureContactModal(contactTrigger)) {
+        event.preventDefault();
+        event.stopImmediatePropagation();
+      }
+    }
+  }, true);
+
+
+  function trialPreferredTimes() {
+    const days = qsa('.trial-day-circle.bg-primary').map(x => x.dataset.day || x.textContent.trim()).join(', ');
+    const times = qsa('.trial-time-range:checked').map(x => x.value).join(', ');
+    const combined = [days ? 'Days: ' + days : '', times ? 'Times: ' + times : ''].filter(Boolean).join(' | ');
+    const hidden = byId('trial-availability');
+    if (hidden) hidden.value = combined;
+    return combined || 'Not specified';
+  }
+
+  document.addEventListener('click', function (event) {
+    const trialDay = event.target.closest('.trial-day-circle');
+    if (!trialDay) return;
+    event.preventDefault();
+    trialDay.classList.toggle('bg-primary');
+    trialDay.classList.toggle('text-white');
+    trialDay.classList.toggle('border-primary');
+    trialPreferredTimes();
+  }, true);
+
+  document.addEventListener('change', function (event) {
+    if (event.target && event.target.matches('.trial-time-range')) trialPreferredTimes();
+  }, true);
+
+  function formDataObject(form) {
+    const data = Object.fromEntries(new FormData(form).entries());
+    data.submitted_from = window.location.href;
+    data.submitted_at = new Date().toISOString();
+
+    if (form.id === 'trial-lesson-form') {
+      data.form_type = 'Trial Lesson Request';
+      data.full_name = data.full_name || valueById('trial-name');
+      data.email = data.email || valueById('trial-email');
+      data.contact_method = data.contact_method || valueById('trial-contact') || 'Not specified';
+      data.interested_language = data.interested_language || valueById('trial-language') || 'Not specified';
+      data.current_level = data.current_level || valueById('trial-level') || 'Not specified';
+      data.time_zone = data.time_zone || valueById('trial-timezone') || 'Not specified';
+      data.preferred_times = trialPreferredTimes();
+    }
+
+    if (form.id === 'enrollment-form') {
+      data.form_type = 'Enrollment Application';
+      data.selected_program = valueById('selected-program') || data.selected_program || 'Not specified';
+      data.full_name = data.full_name || valueById('applicant-name');
+      data.email = data.email || valueById('applicant-email');
+      data.country = data.country || valueById('applicant-country') || 'Not specified';
+      data.time_zone = data.time_zone || valueById('applicant-timezone') || 'Not specified';
+      data.current_ability = data.current_ability || valueById('applicant-level') || 'Not specified';
+      data.age_range = data.age_range || valueById('applicant-age') || 'Not specified';
+      data.motivations = qsa('.motivation:checked').map(x => x.value).join(', ') || 'Not specified';
+      data.priority_skills = qsa('.priority:checked').map(x => x.value).join(', ') || 'Not specified';
+      data.preferred_days = qsa('.day-circle.bg-primary').map(x => x.dataset.day || x.textContent.trim()).join(', ') || 'Not specified';
+      data.time_range = qsa('.time-range:checked').map(x => x.value).join(', ') || 'Not specified';
+      data.success_looks_like = valueById('applicant-success') || 'Not specified';
+    }
+
+    if (form.id === 'contact-form') {
+      const route = form.dataset.formRoute || 'contact';
+      data.form_type = route === 'interest' ? 'General Interest' : 'Contact / Questions';
+      data.source_cta = form.dataset.sourceCta || 'Not specified';
+    }
+
+    if (form.id === 'connect-form') {
+      data.form_type = 'Contact / Questions';
+    }
+
+    if (form.id === 'cohort-interest-form') {
+      data.form_type = 'General Interest';
+    }
+
+    if (form.id === 'payment-contact-form') {
+      data.form_type = 'Contact / Questions';
+    }
+    return data;
+  }
+
+  function endpointFor(form) {
+    if (form.id === 'enrollment-form') return ENDPOINTS.enrollment;
+    if (form.id === 'trial-lesson-form') return ENDPOINTS.trial;
+    if (form.id === 'connect-form') return ENDPOINTS.contact;
+    if (form.id === 'cohort-interest-form') return ENDPOINTS.interest;
+    if (form.id === 'payment-contact-form') return ENDPOINTS.contact;
+    if (form.id === 'contact-form') return ENDPOINTS[form.dataset.formRoute || 'contact'] || ENDPOINTS.contact;
+    return form.getAttribute('action') || ENDPOINTS.contact;
+  }
+
+  async function post(endpoint, payload) {
+    const response = await fetch(endpoint, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+    if (!response.ok) throw new Error('Formspree submission failed.');
+    return response;
+  }
+
+  function setLoading(form, loading) {
+    const button = form.querySelector('button[type="submit"]');
+    if (!button) return;
+    if (loading) {
+      button.dataset.originalText = button.textContent;
+      button.disabled = true;
+      button.textContent = 'Submitting...';
+    } else {
+      button.disabled = false;
+      button.textContent = button.dataset.originalText || button.textContent;
+    }
+  }
+
+  function showSuccess(form) {
+    if (form.id === 'trial-lesson-form') {
+      const success = byId('trial-form-success') || byId('trial-lesson-success');
+      form.classList.add('hidden');
+      if (success) success.classList.remove('hidden');
+      return;
+    }
+    const success = form.id === 'connect-form' ? byId('connect-form-success') : form.id === 'cohort-interest-form' ? byId('cohort-form-success') : byId('form-success') || byId('payment-contact-success');
+    if (success) {
+      form.classList.add('hidden');
+      success.classList.remove('hidden');
+    } else {
+      alert('Thank you. Your request was submitted successfully.');
+    }
+  }
+
+  document.addEventListener('submit', async function (event) {
+    const form = event.target;
+    if (!form || !handledFormIds.has(form.id)) return;
+    event.preventDefault();
+    event.stopImmediatePropagation();
+
+    setFormActions();
+    const endpoint = endpointFor(form);
+    const payload = formDataObject(form);
+    setLoading(form, true);
+
+    try {
+      if (form.id === 'enrollment-form') {
+        sessionStorage.setItem('mlcEnrollmentApplication', JSON.stringify(payload));
+      }
+      await post(endpoint, payload);
+      if (form.id === 'enrollment-form') {
+        const params = new URLSearchParams({ program: payload.selected_program || '', name: payload.full_name || '', email: payload.email || '' });
+        window.location.href = 'payment.html?' + params.toString();
+        return;
+      }
+      showSuccess(form);
+      form.reset();
+    } catch (error) {
+      alert('We could not submit your request yet. Please try again.');
+    } finally {
+      setLoading(form, false);
+    }
+  }, true);
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setFormActions);
+  } else {
+    setFormActions();
+  }
+})();
+</script>
+</body></html>
