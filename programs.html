@@ -815,7 +815,7 @@ Preferred Trial Times: ${document.getElementById('trial-availability').value || 
 <script data-version="MLC-FORMSPREE-ROUTER-v10">
 (function () {
   const ENDPOINTS = {
-    enrollment: 'https://formspree.io/f/mykapgdk',
+    enrollment: 'https://script.google.com/macros/s/AKfycbwbyV9PhQFNfK5M8f57tLiN6vSS8TJ2Mpv1jn_8lhurPDUVe9jOFq4NXqRg_UU4R7o/exec',
     trial: 'https://formspree.io/f/mgobzeze',
     contact: 'https://formspree.io/f/xzdqvbww',
     interest: 'https://formspree.io/f/mojzlqbo'
@@ -1020,15 +1020,28 @@ Preferred Trial Times: ${document.getElementById('trial-availability').value || 
     return form.getAttribute('action') || ENDPOINTS.contact;
   }
 
-  async function post(endpoint, payload) {
-    const response = await fetch(endpoint, {
+ async function post(endpoint, payload, formId = '') {
+  if (formId === 'enrollment-form') {
+    await fetch(endpoint, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      mode: 'no-cors',
+      headers: {
+        'Content-Type': 'text/plain;charset=utf-8'
+      },
       body: JSON.stringify(payload)
     });
-    if (!response.ok) throw new Error('Formspree submission failed.');
-    return response;
+    return;
   }
+
+  const response = await fetch(endpoint, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+    body: JSON.stringify(payload)
+  });
+
+  if (!response.ok) throw new Error('Form submission failed.');
+  return response;
+}
 
   function setLoading(form, loading) {
     const button = form.querySelector('button[type="submit"]');
@@ -1074,7 +1087,7 @@ Preferred Trial Times: ${document.getElementById('trial-availability').value || 
       if (form.id === 'enrollment-form') {
         sessionStorage.setItem('mlcEnrollmentApplication', JSON.stringify(payload));
       }
-      await post(endpoint, payload);
+      await post(endpoint, payload, form.id);
       if (form.id === 'enrollment-form') {
         const params = new URLSearchParams({ program: payload.selected_program || '', name: payload.full_name || '', email: payload.email || '' });
         window.location.href = 'payment.html?' + params.toString();
