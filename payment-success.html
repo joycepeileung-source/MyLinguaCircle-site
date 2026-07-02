@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Payment Received | MyLinguaCircle</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    body { font-family: Inter, sans-serif; background: #faf9f5; color: #1b1c1a; }
+    h1, .brand { font-family: Outfit, sans-serif; }
+  </style>
+</head>
+<body>
+  <main class="min-h-screen flex items-center justify-center px-6 py-16">
+    <section class="max-w-2xl w-full bg-white rounded-[2rem] shadow-xl border border-[#c5c5d7]/40 p-8 md:p-12 text-center">
+      <div class="brand text-[#2036bd] text-2xl font-bold mb-10">MyLinguaCircle</div>
+      <div class="w-16 h-16 rounded-full bg-[#dfe0ff] mx-auto mb-6 flex items-center justify-center text-[#2036bd] text-3xl">✓</div>
+      <h1 class="text-4xl font-bold text-[#2036bd] mb-4">Payment received.</h1>
+      <p class="text-[#454654] text-lg leading-relaxed mb-8">Thank you for enrolling. We will review your application and send cohort placement details, schedule confirmation, and preparation materials by email.</p>
+      <div class="bg-[#f4f4f0] rounded-2xl p-5 text-left text-sm text-[#454654] mb-8">
+        <p class="font-bold text-[#1b1c1a] mb-2">What happens next?</p>
+        <ol class="list-decimal pl-5 space-y-2">
+          <li>We confirm your program and level placement.</li>
+          <li>We email your schedule and onboarding details.</li>
+          <li>You join your first live cohort session.</li>
+        </ol>
+      </div>
+      <a href="index.html" class="inline-block bg-[#2036bd] text-white px-8 py-4 rounded-full font-bold">Return Home</a>
+    </section>
+  </main>
+<script data-version="MLC-FORMSPREE-ROUTER-v10">
+(function () {
+  const ENDPOINTS = {
+    enrollment: 'https://formspree.io/f/mykapgdk',
+    trial: 'https://formspree.io/f/mgobzeze',
+    contact: 'https://formspree.io/f/xzdqvbww',
+    interest: 'https://formspree.io/f/mojzlqbo'
+  };
+
+  const handledFormIds = new Set(['enrollment-form', 'trial-lesson-form', 'contact-form', 'connect-form', 'payment-contact-form']);
+  const byId = id => document.getElementById(id);
+  const qsa = (sel, root = document) => Array.from(root.querySelectorAll(sel));
+  const valueById = id => (byId(id)?.value || '').trim();
+
+  function setFormActions() {
+    const config = {
+      'enrollment-form': ['enrollment', 'Enrollment Application'],
+      'trial-lesson-form': ['trial', 'Trial Lesson Request'],
+      'contact-form': ['contact', 'Contact / Questions'],
+      'connect-form': ['interest', 'General Interest'],
+      'payment-contact-form': ['contact', 'Contact / Questions']
+    };
+    Object.entries(config).forEach(([id, [route, type]]) => {
+      const form = byId(id);
+      if (!form) return;
+      form.setAttribute('action', ENDPOINTS[route]);
+      form.setAttribute('method', 'POST');
+      form.dataset.formRoute = route;
+      form.dataset.formType = type;
+      let hidden = form.querySelector('input[name="form_type"]');
+      if (!hidden) {
+        hidden = document.createElement('input');
+        hidden.type = 'hidden';
+        hidden.name = 'form_type';
+        form.prepend(hidden);
+      }
+      hidden.value = type;
+    });
+  }
+
+  function openModal(modal) {
+    if (!modal) return;
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal(modal) {
+    if (!modal) return;
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+    document.body.style.overflow = '';
+  }
+
+  function resetTrialModal() {
+    const form = byId('trial-lesson-form');
+    const success = byId('trial-form-success') || byId('trial-lesson-success');
+    if (form) {
+      form.classList.remove('hidden');
+      form.dataset.formRoute = 'trial';
+      form.setAttribute('action', ENDPOINTS.trial);
+      form.setAttribute('method', 'POST');
+    }
+    if (success) success.classList.add('hidden');
+  }
+
+  function inferContactRoute(trigger) {
+    const text = (trigger?.textContent || '').trim().toLowerCase();
+    const purpose = (trigger?.dataset?.contactPurpose || trigger?.dataset?.contactTopic || '').toLowerCase();
+    if (trigger?.dataset?.interestCta === 'true') return 'interest';
+    if (/secure your spot|get started|join|cohort|interest|yes/.test(text + ' ' + purpose)) return 'interest';
+    return 'contact';
+  }
+
+  function configureContactModal(trigger) {
+    const modal = byId('contact-modal') || byId('mlc-generic-contact-modal') || byId('lets-connect-modal');
+    const form = byId('contact-form') || byId('connect-form');
+    if (!modal || !form) return false;
+    const route = form.id === 'connect-form' ? 'interest' : inferContactRoute(trigger);
+    form.dataset.formRoute = route;
+    form.dataset.formType = route === 'interest' ? 'General Interest' : 'Contact / Questions';
+    form.setAttribute('action', ENDPOINTS[route]);
+    form.setAttribute('method', 'POST');
+    const topic = trigger?.dataset?.contactTopic || trigger?.dataset?.contactPurpose || trigger?.textContent?.trim() || '';
+    if (topic) form.dataset.sourceCta = topic;
+    openModal(modal);
+    const success = byId('form-success');
+    if (success) success.classList.add('hidden');
+    form.classList.remove('hidden');
+    return true;
+  }
+
+  document.addEventListener('click', function (event) {
+    const trialTrigger = event.target.closest('.open-trial-modal-trigger, [data-open-trial-modal]');
+    if (trialTrigger) {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      resetTrialModal();
+      openModal(byId('trial-lesson-modal'));
+      return;
+    }
+
+    const trialClose = event.target.closest('.close-trial-modal, #close-trial-modal, [data-close-trial-modal]');
+    if (trialClose) {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      closeModal(byId('trial-lesson-modal'));
+      return;
+    }
+
+    const modalBackdrop = byId('trial-lesson-modal');
+    if (modalBackdrop && event.target === modalBackdrop) {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      closeModal(modalBackdrop);
+      return;
+    }
+
+    const contactTrigger = event.target.closest('a[href="#contact-modal"], .open-modal-trigger, .open-contact-modal-trigger, [data-contact-topic], [data-contact-purpose]');
+    if (contactTrigger) {
+      if (configureContactModal(contactTrigger)) {
+        event.preventDefault();
+        event.stopImmediatePropagation();
+      }
+    }
+  }, true);
+
+  function formDataObject(form) {
+    const data = Object.fromEntries(new FormData(form).entries());
+    data.submitted_from = window.location.href;
+    data.submitted_at = new Date().toISOString();
+
+    if (form.id === 'trial-lesson-form') {
+      data.form_type = 'Trial Lesson Request';
+      data.full_name = data.full_name || valueById('trial-name');
+      data.email = data.email || valueById('trial-email');
+      data.contact_method = data.contact_method || valueById('trial-contact') || 'Not specified';
+      data.interested_language = data.interested_language || valueById('trial-language') || 'Not specified';
+      data.current_level = data.current_level || valueById('trial-level') || 'Not specified';
+      data.time_zone = data.time_zone || valueById('trial-timezone') || 'Not specified';
+      data.preferred_times = data.preferred_times || valueById('trial-availability') || 'Not specified';
+      data.learning_goal = data.learning_goal || valueById('trial-goal') || 'Not specified';
+    }
+
+    if (form.id === 'enrollment-form') {
+      data.form_type = 'Enrollment Application';
+      data.selected_program = valueById('selected-program') || data.selected_program || 'Not specified';
+      data.full_name = data.full_name || valueById('applicant-name');
+      data.email = data.email || valueById('applicant-email');
+      data.country = data.country || valueById('applicant-country') || 'Not specified';
+      data.time_zone = data.time_zone || valueById('applicant-timezone') || 'Not specified';
+      data.current_ability = data.current_ability || valueById('applicant-level') || 'Not specified';
+      data.age_range = data.age_range || valueById('applicant-age') || 'Not specified';
+      data.motivations = qsa('.motivation:checked').map(x => x.value).join(', ') || 'Not specified';
+      data.priority_skills = qsa('.priority:checked').map(x => x.value).join(', ') || 'Not specified';
+      data.preferred_days = qsa('.day-circle.bg-primary').map(x => x.dataset.day || x.textContent.trim()).join(', ') || 'Not specified';
+      data.time_range = qsa('.time-range:checked').map(x => x.value).join(', ') || 'Not specified';
+      data.specific_topics = valueById('applicant-topics') || 'Not specified';
+      data.success_looks_like = valueById('applicant-success') || 'Not specified';
+    }
+
+    if (form.id === 'contact-form') {
+      const route = form.dataset.formRoute || 'contact';
+      data.form_type = route === 'interest' ? 'General Interest' : 'Contact / Questions';
+      data.source_cta = form.dataset.sourceCta || 'Not specified';
+    }
+
+    if (form.id === 'connect-form') {
+      data.form_type = 'General Interest';
+    }
+
+    if (form.id === 'payment-contact-form') {
+      data.form_type = 'Contact / Questions';
+    }
+    return data;
+  }
+
+  function endpointFor(form) {
+    if (form.id === 'enrollment-form') return ENDPOINTS.enrollment;
+    if (form.id === 'trial-lesson-form') return ENDPOINTS.trial;
+    if (form.id === 'connect-form') return ENDPOINTS.interest;
+    if (form.id === 'payment-contact-form') return ENDPOINTS.contact;
+    if (form.id === 'contact-form') return ENDPOINTS[form.dataset.formRoute || 'contact'] || ENDPOINTS.contact;
+    return form.getAttribute('action') || ENDPOINTS.contact;
+  }
+
+  async function post(endpoint, payload) {
+    const response = await fetch(endpoint, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+    if (!response.ok) throw new Error('Formspree submission failed.');
+    return response;
+  }
+
+  function setLoading(form, loading) {
+    const button = form.querySelector('button[type="submit"]');
+    if (!button) return;
+    if (loading) {
+      button.dataset.originalText = button.textContent;
+      button.disabled = true;
+      button.textContent = 'Submitting...';
+    } else {
+      button.disabled = false;
+      button.textContent = button.dataset.originalText || button.textContent;
+    }
+  }
+
+  function showSuccess(form) {
+    if (form.id === 'trial-lesson-form') {
+      const success = byId('trial-form-success') || byId('trial-lesson-success');
+      form.classList.add('hidden');
+      if (success) success.classList.remove('hidden');
+      return;
+    }
+    const success = byId('form-success') || byId('payment-contact-success');
+    if (success) {
+      form.classList.add('hidden');
+      success.classList.remove('hidden');
+    } else {
+      alert('Thank you. Your request was submitted successfully.');
+    }
+  }
+
+  document.addEventListener('submit', async function (event) {
+    const form = event.target;
+    if (!form || !handledFormIds.has(form.id)) return;
+    event.preventDefault();
+    event.stopImmediatePropagation();
+
+    setFormActions();
+    const endpoint = endpointFor(form);
+    const payload = formDataObject(form);
+    setLoading(form, true);
+
+    try {
+      if (form.id === 'enrollment-form') {
+        sessionStorage.setItem('mlcEnrollmentApplication', JSON.stringify(payload));
+      }
+      await post(endpoint, payload);
+      if (form.id === 'enrollment-form') {
+        const params = new URLSearchParams({ program: payload.selected_program || '', name: payload.full_name || '', email: payload.email || '' });
+        window.location.href = 'payment.html?' + params.toString();
+        return;
+      }
+      showSuccess(form);
+      form.reset();
+    } catch (error) {
+      alert('We could not submit your request yet. Please try again.');
+    } finally {
+      setLoading(form, false);
+    }
+  }, true);
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setFormActions);
+  } else {
+    setFormActions();
+  }
+})();
+</script>
+
+</body>
+</html>
